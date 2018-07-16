@@ -1,4 +1,3 @@
-<script>
 const SAINTS = [];
   
   function ready(eventHandler){
@@ -121,4 +120,3 @@ ready(function(){
   })
   
 });
-</script>
