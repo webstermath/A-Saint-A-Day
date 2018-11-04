@@ -10,12 +10,13 @@ const SAINTS = [];
 
   function getDateKey(){
    const today=new Date()
+   return dateFns.getDayOfYear(today-1)
    const monthDays=[31,29,31,30,31,30,31,31,30,31,30,31];
    
    return monthDays.slice(0, today.getMonth()).reduce(function(acc,days){return acc+days},today.getDate())-1
   }
   
-// ****** Make Audio Controls *******  
+// ****** Make Audio Controls *******
   function makeAudioControls(data,audioTrack){
     const audioControls=audioTrack.querySelector('.audio_controls');
     audioControls.insertAdjacentHTML('beforeend', `<button class="player_button" title="Toggle Play">►</button>`);
@@ -36,7 +37,7 @@ const SAINTS = [];
      audio.currentTime=data.start
      audio.pause();
     }
-   } 
+   }
     playerButton.addEventListener('click', togglePlay);
     audio.addEventListener('play', updateButton);
     audio.addEventListener('pause', updateButton);
@@ -66,7 +67,7 @@ function makeAudioApp(dateKey){
  const audioUrl=saint.url//`${saint.url}#t=${saint.start},${saint.end}`;
  const playerContainer=audioTrack.querySelector('.audio_player_container');
  playerContainer.innerHTML=`<audio src="${audioUrl}" class="audio_player">`
- audioTrack.insertAdjacentHTML('beforeend', `<div class="audio_controls"></div>`); 
+ audioTrack.insertAdjacentHTML('beforeend', `<div class="audio_controls"></div>`);
  
  const audioPlayer=playerContainer.querySelector('.audio_player');
  console.log(new Date())
@@ -107,7 +108,7 @@ function makeAppControls(dateKey){
 
 /********************
 ***** READY *********
-*********************/  
+*********************/
 ready(function(){
   fetch('https://script.google.com/macros/s/AKfycbyZ8X6XntBJZC5s_0eT08NHan8c1n_htRj_cyxMAuExzrTGDds/exec')
   .then(r => r.json())
