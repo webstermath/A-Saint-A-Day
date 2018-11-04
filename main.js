@@ -11,9 +11,9 @@ const SAINTS = [];
   function getDateKey(){
    const today=new Date()
    return dateFns.getDayOfYear(today-1)
-   const monthDays=[31,29,31,30,31,30,31,31,30,31,30,31];
-   
-   return monthDays.slice(0, today.getMonth()).reduce(function(acc,days){return acc+days},today.getDate())-1
+   //TODO remove below
+   //const monthDays=[31,29,31,30,31,30,31,31,30,31,30,31];
+   //return monthDays.slice(0, today.getMonth()).reduce(function(acc,days){return acc+days},today.getDate())-1
   }
   
 // ****** Make Audio Controls *******
@@ -105,19 +105,30 @@ function makeAppControls(dateKey){
 
 }
 
+async function init(){
+  const response = await fetch('https://script.google.com/macros/s/AKfycbyZ8X6XntBJZC5s_0eT08NHan8c1n_htRj_cyxMAuExzrTGDds/exec');
+  const data = await response.json();
+  SAINTS.push(...data);
+  console.log(data);
+  const dateKey = getDateKey()
+  makeAudioApp(dateKey)
+  
+}
+
 
 /********************
 ***** READY *********
 *********************/
-ready(function(){
-  fetch('https://script.google.com/macros/s/AKfycbyZ8X6XntBJZC5s_0eT08NHan8c1n_htRj_cyxMAuExzrTGDds/exec')
-  .then(r => r.json())
-  .then(r => SAINTS.push(...r))
-  .then(console.log)
-  .then(function(){
-    const dateKey=getDateKey();
-    makeAudioApp(dateKey)
-
-  })
+ready(init)
+// ready(function(){
   
-});
+//   .then(r => r.json())
+//   .then(r => SAINTS.push(...r))
+//   .then(console.log)
+//   .then(function(){
+//     const dateKey=getDateKey();
+//     makeAudioApp(dateKey)
+
+//   })
+  
+//});
