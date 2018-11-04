@@ -11,19 +11,18 @@ const SAINTS = [];
   function getDateKey(){
    const today=new Date()
    return dateFns.getDayOfYear(today-1)
-   //TODO remove below
-   //const monthDays=[31,29,31,30,31,30,31,31,30,31,30,31];
-   //return monthDays.slice(0, today.getMonth()).reduce(function(acc,days){return acc+days},today.getDate())-1
   }
   
 // ****** Make Audio Controls *******
   function makeAudioControls(data,audioTrack){
+    // elements
     const audioControls=audioTrack.querySelector('.audio_controls');
     audioControls.insertAdjacentHTML('beforeend', `<button class="player_button" title="Toggle Play">►</button>`);
     const playerContainer = audioTrack.querySelector('.audio_player_container');
     const audio = playerContainer.querySelector('.audio_player');
     const playerButton = audioControls.querySelector('.player_button');
    
+   //functions
    function togglePlay() {
      const method = audio.paused ? 'play' : 'pause';
      audio[method]();
@@ -38,12 +37,15 @@ const SAINTS = [];
      audio.pause();
     }
    }
+    // event handlers
     playerButton.addEventListener('click', togglePlay);
     audio.addEventListener('play', updateButton);
     audio.addEventListener('pause', updateButton);
     audio.addEventListener('timeupdate',resetTime)
   }
-// ******* END makeAudioControls(data) ******
+
+
+// ****** MAke Audio App ******
 function makeAudioApp(dateKey){
  const audioApp=document.querySelector('#audio_app')
  const saints=SAINTS[dateKey];
@@ -81,7 +83,10 @@ function makeAudioApp(dateKey){
 
  
 }
+
+// ****** Make App Controls ******
 function makeAppControls(dateKey){
+  // elements
  const audioApp=document.querySelector('#audio_app')
  audioApp.insertAdjacentHTML('beforeend', `<div class="app_controls"></div>`);
  const appControls=audioApp.querySelector('.app_controls');
@@ -90,6 +95,7 @@ function makeAppControls(dateKey){
  const forward=appControls.querySelector('.forward');
  const back=appControls.querySelector('.back');
  
+ // functions
  function moveForward(){
   const newDateKey=(dateKey+1)%366
   makeAudioApp(newDateKey)
@@ -100,11 +106,13 @@ function makeAppControls(dateKey){
   makeAudioApp(newDateKey)
  }
  
+ // event handlers
  forward.addEventListener('click', moveForward);
  back.addEventListener('click', moveBack);
 
 }
 
+// ****** Init ******
 async function init(){
   const response = await fetch('https://script.google.com/macros/s/AKfycbyZ8X6XntBJZC5s_0eT08NHan8c1n_htRj_cyxMAuExzrTGDds/exec');
   const data = await response.json();
@@ -119,16 +127,5 @@ async function init(){
 /********************
 ***** READY *********
 *********************/
-ready(init)
-// ready(function(){
-  
-//   .then(r => r.json())
-//   .then(r => SAINTS.push(...r))
-//   .then(console.log)
-//   .then(function(){
-//     const dateKey=getDateKey();
-//     makeAudioApp(dateKey)
+ready(init);
 
-//   })
-  
-//});
