@@ -78,8 +78,9 @@ function makeAudioApp(dateKey){
   audioPlayer.currentTime=saint.start
   makeAudioControls(saint,audioTrack)
   makeAppControls(dateKey)
- },{once: true})
-
+ },{once: true});
+  
+ audioPlayer.load();
 
  
 }
