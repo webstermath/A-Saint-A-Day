@@ -73,7 +73,7 @@ function makeAudioApp(dateKey){
  
  const audioPlayer=playerContainer.querySelector('.audio_player');
  console.log(new Date())
- audioPlayer.addEventListener('canplay',function(e){
+ audioPlayer.addEventListener('canplaythrough',function(e){
  console.log(new Date())
   audioPlayer.currentTime=saint.start
   makeAudioControls(saint,audioTrack)
