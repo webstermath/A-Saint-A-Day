@@ -54,12 +54,13 @@ function makeAppControls(dateKey, saintLen, saintIndex){
  const back=appControls.querySelector('.back');
  const audioTrack=audioApp.querySelector('.audio_track');
  console.log(audioTrack)
+ console.log(saintLen-1)
  if(saintLen-1){
   const audioControls=audioTrack.querySelector('.audio_controls');
   audioControls.insertAdjacentHTML('beforebegin', `<button class="prev_saint_button" title="Previous Saint">⮜</button>`);
   audioControls.insertAdjacentHTML('afterend', `<button class="next_saint_button" title="Next Saint">⮞</button>`);
-  const prevSaintEl = audioControls.querySelector('.prev_saint_button')
-  const nextSaintEl = audioControls.querySelector('.next_saint_button')
+  var prevSaintEl = audioControls.querySelector('.prev_saint_button')
+  var nextSaintEl = audioControls.querySelector('.next_saint_button')
  }
  
  
