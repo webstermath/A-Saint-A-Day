@@ -52,7 +52,7 @@ function makeAppControls(dateKey, saintLen, saintIndex){
  appControls.insertAdjacentHTML('beforeend', `<button class="control_button forward">→</button>`);
  const forward=appControls.querySelector('.forward');
  const back=appControls.querySelector('.back');
- const audioTrack=audioApp.querySelector('.audio_track:last-child');
+ const audioTrack=audioApp.querySelector('.audio_track');
  console.log(audioTrack)
  if(saintLen-1){
   const audioControls=audioTrack.querySelector('.audio_controls');
