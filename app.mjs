@@ -1,6 +1,4 @@
 
-const SAINTS = []
-
 // ****** Make Audio Controls *******
   function makeAudioControls(data,audioTrack){
     // elements
