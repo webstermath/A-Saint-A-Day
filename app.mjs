@@ -59,8 +59,8 @@ function makeAppControls(dateKey, saintLen, saintIndex){
   const audioControls=audioTrack.querySelector('.audio_controls');
   audioControls.insertAdjacentHTML('beforebegin', `<button class="prev_saint_button" title="Previous Saint">⮜</button>`);
   audioControls.insertAdjacentHTML('afterend', `<button class="next_saint_button" title="Next Saint">⮞</button>`);
-  var prevSaintEl = audioControls.querySelector('.prev_saint_button')
-  var nextSaintEl = audioControls.querySelector('.next_saint_button')
+  var prevSaintEl = audioApp.querySelector('.prev_saint_button')
+  var nextSaintEl = audioApp.querySelector('.next_saint_button')
  }
  
  
