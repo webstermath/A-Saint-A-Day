@@ -77,11 +77,11 @@ function makeAppControls(dateKey, saintLen, saintIndex){
  }
  
  function nextSaint(){
-   makeAudioApp(dateKey, saintLen, saintIndex+1 % saintLen)
+   makeAudioApp(dateKey, saintIndex+1 % saintLen)
  }
  
   function prevSaint(){
-   makeAudioApp(dateKey, saintLen, (saintIndex || saintLen) - 1)
+   makeAudioApp(dateKey, (saintIndex || saintLen) - 1)
  }
  
  // event handlers
