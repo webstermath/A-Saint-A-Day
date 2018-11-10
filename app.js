@@ -1,4 +1,4 @@
-import {getMonthDay} from './utilities.mjs';
+import {getMonthDay} from './utilities.js';
 
 
 

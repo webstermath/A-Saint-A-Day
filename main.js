@@ -1,4 +1,4 @@
-import {makeAudioApp} from './app.mjs';
+import {makeAudioApp} from './app.js';
 
 
 window.SAINTS = [];
