@@ -1,4 +1,5 @@
-window.App = {makeAudioApp}
+
+const SAINTS = []
 
 // ****** Make Audio Controls *******
   function makeAudioControls(data,audioTrack){

@@ -1,7 +1,7 @@
 import {makeAudioApp} from './app.mjs';
 
 
-const SAINTS = [];
+window.SAINTS = [];
   
   function ready(eventHandler){
     if (document.readyState !== 'loading') {
