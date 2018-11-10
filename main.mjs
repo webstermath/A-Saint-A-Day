@@ -1,3 +1,6 @@
+import {makeAudioApp} from './app.mjs';
+
+
 const SAINTS = [];
   
   function ready(eventHandler){

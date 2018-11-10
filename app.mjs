@@ -33,7 +33,7 @@ window.App = {makeAudioApp}
 
 
 // ****** MAke Audio App ******
-function makeAudioApp(dateKey){
+export function makeAudioApp(dateKey){
  const audioApp=document.querySelector('#audio_app')
  const saints=SAINTS[dateKey];
  console.log(saints)
