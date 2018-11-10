@@ -77,7 +77,7 @@ function makeAppControls(dateKey, saintLen, saintIndex){
  }
  
  function nextSaint(){
-   makeAudioApp(dateKey, saintIndex+1 % saintLen)
+   makeAudioApp(dateKey, (saintIndex+1) % saintLen)
  }
  
   function prevSaint(){
