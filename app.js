@@ -15,15 +15,11 @@ import {getMonthDay} from './utilities.js';
     pushUrlQuery(urlParams.toString())
     return urlParams;
   }
-  
-  function getDateKey(){
-   const today=new Date()
-   return dateFns.getDayOfYear(today-1)
-  }
+
 // ****** Make Audio App ******
 export function getAudioApp(){
  // data
-  const dateKey = +getUrlParam('dateKey',+getDateKey())
+  const dateKey = +getUrlParam('dateKey',+dateFns.getDayOfYear(new Date()))
   
   const saints = SAINTS[dateKey];
   console.log(saints);
