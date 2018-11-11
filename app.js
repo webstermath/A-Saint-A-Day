@@ -16,16 +16,6 @@ import {getMonthDay} from './utilities.js';
     return urlParams;
   }
   
-  function getDateKeyFromUrl(){
-   if(getUrlParam('dateKey') === null) setUrlParam('dateKey', +getDateKey());
-   return +getUrlParam('dateKey');
-  }
-  
-  function getTrackFromUrl(){
-   if(getUrlParam('track') === null) setUrlParam('track', 0);
-   return +getUrlParam('track');
-  }
-  
   function getDateKey(){
    const today=new Date()
    return dateFns.getDayOfYear(today-1)
