@@ -84,11 +84,11 @@ function getFeastWidget(saints,saintIndex){
  }
  
  function nextTrack(){
-  $container.replaceWith(getFeastWidget(saints, (saintIndex+1) % saintLen));
+  $container.replaceWith(getFeastWidget(saints, (saintIndex+1) % saintLen).render());
  }
 
  function prevTrack(){
-  $container.replaceWith(getFeastWidget(saints, (saintIndex || saintLen) - 1));
+  $container.replaceWith(getFeastWidget(saints, (saintIndex || saintLen) - 1).render());
  }
  
   // events
