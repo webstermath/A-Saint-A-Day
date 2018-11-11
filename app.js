@@ -1,4 +1,3 @@
-import {getMonthDay} from './utilities.js';
  function pushUrlQuery(query){
     var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname +'?'+ query;
     window.history.pushState({path:newurl},'',newurl);
@@ -39,16 +38,17 @@ return function getAudioApp(){
   
   const saints = saintCalendar[dateKey];
   console.log(saints);
-
  //elements
  const $container = $$('div').addClass('saint-app');
- const $dateTitle = $$('h2').text(getMonthDay(dateKey+1).join('-')).addClass("saint-app__date-title");
+ const $dateTitle = $$('h2')
+ .text(dateFns.format(dateFns.setDayOfYear(new Date(),dateKey),'dddd, MMMM D')).addClass("saint-app__date-title");
  const feastWidget = saints.length ? getFeastWidget(saints).render() : $$('h3').text('No Saint Found').addClass("no-saint-found");
  const $appNavigation = $$('div').addClass('app-navigation');
  const $prevDateButton = $$('button').text('←').addClass('app-navigation__button app-navigation__button_date_prev');
  const $nextDateButton = $$('button').text('→').addClass('app-navigation__button app-navigation__button_date_next');
  const $dateInput = $$('_date').addClass('app-navigation__input app-navigation__input_date').attr('title', 'Go To Date');
- const $saintInput = $$('_text').addClass('app-navigation__input app-navigation__input_daint').attr('title', 'Go To Saint').attr('list','saint_list');
+ const $saintInput = $$('_text').addClass('app-navigation__input app-navigation__input_saint').attr('title', 'Go To Saint')
+ .attr('list','saint_list').attr('placeholder','Go To Saint');
  //functions
  
  function moveForward(){
