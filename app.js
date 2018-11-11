@@ -11,13 +11,15 @@ import {getMonthDay} from './utilities.js';
 
   function setUrlParam(key,val){
     const urlParams = new URLSearchParams(window.location.search.substring(1));
-    urlParams.set(key, val)
-    pushUrlQuery(urlParams.toString())
+    urlParams.set(key, val);
+    pushUrlQuery(urlParams.toString());
     return urlParams;
   }
 
 // ****** Make Audio App ******
-export function getAudioApp(){
+export function getAudioAppFn(SAINTS){
+
+return function getAudioApp(){
  // data
   const dateKey = +getUrlParam('dateKey',+dateFns.getDayOfYear(new Date()))
   
@@ -31,7 +33,8 @@ export function getAudioApp(){
  const $appNavigation = $$('div').addClass('app-navigation');
  const $prevDateButton = $$('button').text('←').addClass('app-navigation__button app-navigation__button_date_prev');
  const $nextDateButton = $$('button').text('→').addClass('app-navigation__button app-navigation__button_date_next');
- 
+ const $dateInput = $$('_date').addClass('app-navigation__input app-navigation__input_date').attr('title', 'Go To Date');
+ const $saintInput = $$('_text').addClass('app-navigation__input app-navigation__input_daint').attr('title', 'Go To Date');
  //functions
  
  function moveForward(){
@@ -44,10 +47,15 @@ export function getAudioApp(){
   $container.replaceWith(getAudioApp().render());
  }
  
+ function goToDate(dateStr){
+   setUrlParam('dateKey',+dateFns.getDayOfYear(new Date(dateStr))+1);
+   $container.replaceWith(getAudioApp().render());
+ }
+ 
  // events
  $prevDateButton.click(moveBack);
  $nextDateButton.click(moveForward);
- 
+ $dateInput.change(e => goToDate(e.target.value));
  // render
  
  function render(){
@@ -57,11 +65,14 @@ export function getAudioApp(){
    .append($appNavigation
     .append($prevDateButton)
     .append($nextDateButton)
+    .append($dateInput)
+    .append($saintInput)
    );
  }
  
  return {render}
  
+}
 }
 
 // ****** Get Feast Widget ******

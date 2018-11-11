@@ -1,3 +1,13 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after{
+  box-sizing: inherit;
+}
+
+
 #container{
 font-family: 'Philosopher', sans-serif;
  max-width:500px;
@@ -5,7 +15,7 @@ font-family: 'Philosopher', sans-serif;
  margin:auto;
  border: 6px solid navy;
  border-radius: 10px;
- min-height: 500px;
+ height: 100vh;
 }
 h1{
  text-align: center;
@@ -51,8 +61,28 @@ border-radius:25%;
   display: none;
 }
 
-.app-navigation{
-  display: flex;
-  justify-content: center;
-  
+.app-navigation{;
+display: inline-grid;
+grid-gap: 10px;
+grid-template-columns: 50% 50%;
+grid-template-areas:
+    "prev_button next_button"
+    "date_input saint_input";
+}
+.app-navigation__button_date_prev{
+ grid-area: prev_button;
+ justify-self: end;
+}
+
+.app-navigation__button_date_next{
+ grid-area: next_button;
+}
+
+.app-navigation__input_date{
+ grid-area: date_input;
+ justify-self: end;
+}
+
+.app-navigation__input_saint{
+ grid-area: saint_input;
 }

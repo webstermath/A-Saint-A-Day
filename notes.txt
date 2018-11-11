@@ -11,3 +11,4 @@ later
 -add pictures
 - use webpack to size pictures
 - have "go to saint" and "go to date" search
+-- create object {saint: {dateKey: ..., track: ...}}
