@@ -3,8 +3,28 @@ import {getMonthDay} from './utilities.js';
     var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname +'?'+ query;
     window.history.pushState({path:newurl},'',newurl);
  }
+   function getUrlParam(key){
+    const urlParams = new URLSearchParams(window.location.search.substring(1));
+    return urlParams.get(key)
+  }
 
-
+  function setUrlParam(key,val){
+    const urlParams = new URLSearchParams(window.location.search.substring(1));
+    urlParams.set(key, val)
+    pushUrlQuery(urlParams.toString())
+    return urlParams;
+  }
+  
+  function getDateKeyFromUrl(){
+   if(getUrlParam('dateKey') === null) setUrlParam('dateKey', +getDateKey());
+   return +getUrlParam('dateKey');
+  }
+  
+  function getTrackFromUrl(){
+   if(getUrlParam('track') === null) setUrlParam('track', 0);
+   return +getUrlParam('track');
+  }
+  
   function getDateKey(){
    const today=new Date()
    return dateFns.getDayOfYear(today-1)
@@ -12,12 +32,7 @@ import {getMonthDay} from './utilities.js';
 // ****** Make Audio App ******
 export function getAudioApp(){
  // data
-  let urlParams = new URLSearchParams(window.location.search.substring(1));
-  if(urlParams.get('dateKey') === null){
-    pushUrlQuery('dateKey='+getDateKey()+'&track=0')
-    urlParams = new URLSearchParams(window.location.search.substring(1));
-  }
-  const dateKey = +urlParams.get('dateKey');
+  const dateKey = getDateKeyFromUrl()
   
   const saints = SAINTS[dateKey];
   console.log(saints);
@@ -33,14 +48,12 @@ export function getAudioApp(){
  //functions
  
  function moveForward(){
-  pushUrlQuery('dateKey='+((dateKey+1)%366)+'&track=0');
-  //window.location.search = 'dateKey='+((dateKey+1)%366)+'&track=0';
+  setUrlParam('dateKey', (dateKey+1)%366);
   $container.replaceWith(getAudioApp().render());
  }
  
  function moveBack(){
-  pushUrlQuery('dateKey='+((dateKey || 366)-1)+'&track=0');
-  //window.location.search = 'dateKey='+((dateKey || 366)-1)+'&track=0';
+  setUrlParam('dateKey', (dateKey || 366)-1);
   $container.replaceWith(getAudioApp().render());
  }
  
@@ -66,13 +79,8 @@ export function getAudioApp(){
 
 // ****** Get Feast Widget ******
 function getFeastWidget(saints){
-  const urlParams = new URLSearchParams(window.location.search.substring(1));
-  if(urlParams.get('track') === null){
-    //window.location.search = 'dateKey='+urlParams.get('dateKey')+'&track=0'
-    pushUrlQuery('dateKey='+urlParams.get('dateKey')+'&track=0');
-    urlParams = new URLSearchParams(window.location.search.substring(1));
-  }
-  const saintIndex = +urlParams.get('track');
+
+ const saintIndex = getTrackFromUrl()
   
   // data
  const saint = saints[saintIndex];
@@ -112,14 +120,12 @@ function getFeastWidget(saints){
  }
  
  function nextTrack(){
-  pushUrlQuery('dateKey='+urlParams.get('dateKey')+'&track='+((saintIndex+1) % saintLen))
-  //window.location.search = 'dateKey='+urlParams.get('dateKey')+'&track='+((saintIndex+1) % saintLen)
+  setUrlParam('track',(saintIndex+1) % saintLen);
   $container.replaceWith(getFeastWidget(saints).render());
  }
 
  function prevTrack(){
-  pushUrlQuery('dateKey='+urlParams.get('dateKey')+'&track='+ ((saintIndex || saintLen) - 1))
-  //window.location.search = 'dateKey='+urlParams.get('dateKey')+'&track='+ ((saintIndex || saintLen) - 1)
+  setUrlParam('track',(saintIndex || saintLen) - 1);
   $container.replaceWith(getFeastWidget(saints).render());
  }
  
