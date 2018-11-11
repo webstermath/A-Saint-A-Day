@@ -15,15 +15,29 @@ import {getMonthDay} from './utilities.js';
     pushUrlQuery(urlParams.toString());
     return urlParams;
   }
+  
+  function makeDataList(id,list){
+    $("#datalists").append($$('datalist').attr('id',id)
+    .append(list.map(item => $$('option',item))));
+  }
 
 // ****** Make Audio App ******
-export function getAudioAppFn(SAINTS){
+export function getAudioAppFn(saintCalendar){
+  const saintLookUp = saintCalendar.reduce(function(acc,day,dateKey){
+    day.forEach(function(saint,saintIndex){
+      acc[saint.feast]={dateKey,saintIndex}
+    });
+    return acc;
+  },{});
+  
+  makeDataList('saint_list',Object.keys(saintLookUp).map(saint => ({html: saint})))
+  console.log(saintLookUp);
 
 return function getAudioApp(){
  // data
   const dateKey = +getUrlParam('dateKey',+dateFns.getDayOfYear(new Date()))
   
-  const saints = SAINTS[dateKey];
+  const saints = saintCalendar[dateKey];
   console.log(saints);
 
  //elements
@@ -34,7 +48,7 @@ return function getAudioApp(){
  const $prevDateButton = $$('button').text('←').addClass('app-navigation__button app-navigation__button_date_prev');
  const $nextDateButton = $$('button').text('→').addClass('app-navigation__button app-navigation__button_date_next');
  const $dateInput = $$('_date').addClass('app-navigation__input app-navigation__input_date').attr('title', 'Go To Date');
- const $saintInput = $$('_text').addClass('app-navigation__input app-navigation__input_daint').attr('title', 'Go To Date');
+ const $saintInput = $$('_text').addClass('app-navigation__input app-navigation__input_daint').attr('title', 'Go To Saint').attr('list','saint_list');
  //functions
  
  function moveForward(){
@@ -52,10 +66,19 @@ return function getAudioApp(){
    $container.replaceWith(getAudioApp().render());
  }
  
+  function goToSaint(saintName){
+   const saint = saintLookUp[saintName];
+   if(!saint) return;
+   setUrlParam('dateKey',saint.dateKey);
+   setUrlParam('track',saint.saintIndex);
+   $container.replaceWith(getAudioApp().render());
+ }
+ 
  // events
  $prevDateButton.click(moveBack);
  $nextDateButton.click(moveForward);
  $dateInput.change(e => goToDate(e.target.value));
+ $saintInput.change(e => goToSaint(e.target.value));
  // render
  
  function render(){
