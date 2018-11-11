@@ -3,9 +3,10 @@ import {getMonthDay} from './utilities.js';
     var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname +'?'+ query;
     window.history.pushState({path:newurl},'',newurl);
  }
-   function getUrlParam(key){
-    const urlParams = new URLSearchParams(window.location.search.substring(1));
-    return urlParams.get(key)
+   function getUrlParam(key,defaultVal){
+    let urlParams = new URLSearchParams(window.location.search.substring(1));
+    if(urlParams.get(key) === null && defaultVal !== undefined) urlParams = setUrlParam(key, defaultVal);
+    return urlParams.get(key);
   }
 
   function setUrlParam(key,val){
@@ -32,7 +33,7 @@ import {getMonthDay} from './utilities.js';
 // ****** Make Audio App ******
 export function getAudioApp(){
  // data
-  const dateKey = getDateKeyFromUrl()
+  const dateKey = +getUrlParam('dateKey',+getDateKey())
   
   const saints = SAINTS[dateKey];
   console.log(saints);
@@ -79,9 +80,8 @@ export function getAudioApp(){
 
 // ****** Get Feast Widget ******
 function getFeastWidget(saints){
-
- const saintIndex = getTrackFromUrl()
-  
+ const saintIndex = +getUrlParam('track',0)
+ 
   // data
  const saint = saints[saintIndex];
  const saintLen = saints.length;
