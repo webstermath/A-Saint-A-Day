@@ -1,0 +1,15 @@
+TODO
+- use BEM from naming
+- use idb and put saint objects in idb
+- save auido in cache
+-need favicon
+- add queries css
+create Saint object with get function that loads from idb
+
+later
+-add pictures
+- use webpack to size pictures
+- have go to saint and go to date search
+-bring in $$ and bling.js
+- write in data elements functions events render form
+-- add to url abbility to add on date keys for rest

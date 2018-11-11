@@ -14,7 +14,7 @@ h1{
  text-align: center;
  font-style: italic
 }
-#audio_app{
+#saint_app{
  text-align:center;
 }
 .player_button{
@@ -36,4 +36,34 @@ margin: 10px;
 border-radius:25%;
  background-color: blue;
  color: ghostwhite;
+}
+
+
+.app-navigation__button, .player-controls__button, .track-controls__button{
+ display: inline-block;
+ font-size: 3em;
+ width: 100px;
+ height:100px;
+ margin:auto:
+ margin-top: 20px;
+ margin-bottom: 20px;
+ background-color: blue;
+ color: ghostwhite;
+ border-radius:50%;
+}
+
+.player-controls{
+  display: flex;
+  justify-content: center;
+  
+}
+
+.track-controls__play_button{
+  display: none;
+}
+
+.app-navigation{
+  display: flex;
+  justify-content: center;
+  
 }

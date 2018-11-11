@@ -1,4 +1,5 @@
-import {makeAudioApp} from './app.js';
+//import {makeAudioApp} from './app.js';
+import {getAudioApp} from './app.js';
 
 
 window.SAINTS = [];
@@ -25,7 +26,7 @@ async function init(){
   SAINTS.push(...data);
   console.log(data);
   const dateKey = getDateKey()
-  makeAudioApp(dateKey)
+  $('#saint_app').html(getAudioApp(dateKey).render());
   
 }
 
