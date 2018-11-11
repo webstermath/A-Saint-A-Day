@@ -1,15 +1,31 @@
 import {getMonthDay} from './utilities.js';
+ function pushUrlQuery(query){
+    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname +'?'+ query;
+    window.history.pushState({path:newurl},'',newurl);
+ }
 
+
+  function getDateKey(){
+   const today=new Date()
+   return dateFns.getDayOfYear(today-1)
+  }
 // ****** Make Audio App ******
-export function getAudioApp(dateKey,saintIndex = 0){
+export function getAudioApp(){
  // data
- const saints = SAINTS[dateKey];
- console.log(saints);
+  let urlParams = new URLSearchParams(window.location.search.substring(1));
+  if(urlParams.get('dateKey') === null){
+    pushUrlQuery('dateKey='+getDateKey()+'&track=0')
+    urlParams = new URLSearchParams(window.location.search.substring(1));
+  }
+  const dateKey = +urlParams.get('dateKey');
+  
+  const saints = SAINTS[dateKey];
+  console.log(saints);
 
  //elements
  const $container = $$('div').addClass('saint-app');
  const $dateTitle = $$('h2').text(getMonthDay(dateKey+1).join('-')).addClass("saint-app__date-title");
- const feastWidget = saints.length ? getFeastWidget(saints,saintIndex) : $$('h3').text('No Saint Found').addClass("no-saint-found");
+ const feastWidget = saints.length ? getFeastWidget(saints).render() : $$('h3').text('No Saint Found').addClass("no-saint-found");
  const $appNavigation = $$('div').addClass('app-navigation');
  const $prevDateButton = $$('button').text('←').addClass('app-navigation__button app-navigation__button_date_prev');
  const $nextDateButton = $$('button').text('→').addClass('app-navigation__button app-navigation__button_date_next');
@@ -17,11 +33,15 @@ export function getAudioApp(dateKey,saintIndex = 0){
  //functions
  
  function moveForward(){
-  $container.replaceWith(getAudioApp((dateKey+1)%366).render());
+  pushUrlQuery('dateKey='+((dateKey+1)%366)+'&track=0');
+  //window.location.search = 'dateKey='+((dateKey+1)%366)+'&track=0';
+  $container.replaceWith(getAudioApp().render());
  }
  
  function moveBack(){
-  $container.replaceWith(getAudioApp((dateKey || 366)-1).render());
+  pushUrlQuery('dateKey='+((dateKey || 366)-1)+'&track=0');
+  //window.location.search = 'dateKey='+((dateKey || 366)-1)+'&track=0';
+  $container.replaceWith(getAudioApp().render());
  }
  
  // events
@@ -33,7 +53,7 @@ export function getAudioApp(dateKey,saintIndex = 0){
  function render(){
    return $container
    .append($dateTitle)
-   .append(feastWidget.render())
+   .append(feastWidget)
    .append($appNavigation
     .append($prevDateButton)
     .append($nextDateButton)
@@ -45,7 +65,15 @@ export function getAudioApp(dateKey,saintIndex = 0){
 }
 
 // ****** Get Feast Widget ******
-function getFeastWidget(saints,saintIndex){
+function getFeastWidget(saints){
+  const urlParams = new URLSearchParams(window.location.search.substring(1));
+  if(urlParams.get('track') === null){
+    //window.location.search = 'dateKey='+urlParams.get('dateKey')+'&track=0'
+    pushUrlQuery('dateKey='+urlParams.get('dateKey')+'&track=0');
+    urlParams = new URLSearchParams(window.location.search.substring(1));
+  }
+  const saintIndex = +urlParams.get('track');
+  
   // data
  const saint = saints[saintIndex];
  const saintLen = saints.length;
@@ -84,11 +112,15 @@ function getFeastWidget(saints,saintIndex){
  }
  
  function nextTrack(){
-  $container.replaceWith(getFeastWidget(saints, (saintIndex+1) % saintLen).render());
+  pushUrlQuery('dateKey='+urlParams.get('dateKey')+'&track='+((saintIndex+1) % saintLen))
+  //window.location.search = 'dateKey='+urlParams.get('dateKey')+'&track='+((saintIndex+1) % saintLen)
+  $container.replaceWith(getFeastWidget(saints).render());
  }
 
  function prevTrack(){
-  $container.replaceWith(getFeastWidget(saints, (saintIndex || saintLen) - 1).render());
+  pushUrlQuery('dateKey='+urlParams.get('dateKey')+'&track='+ ((saintIndex || saintLen) - 1))
+  //window.location.search = 'dateKey='+urlParams.get('dateKey')+'&track='+ ((saintIndex || saintLen) - 1)
+  $container.replaceWith(getFeastWidget(saints).render());
  }
  
   // events

@@ -17,18 +17,7 @@ h1{
 #saint_app{
  text-align:center;
 }
-.player_button{
- display: inline-block;
- font-size: 3em;
- width: 100px;
- height:100px;
- margin:auto:
- margin-top: 20px;
- margin-bottom: 20px;
- background-color: blue;
- color: ghostwhite;
- border-radius:50%;
-}
+
 .control_button{
 display: inline-block;
 font-size: 2em;
