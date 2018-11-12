@@ -12,6 +12,10 @@ a{
   
 }
 
+body{
+  background-color: black;
+}
+
 #container{
 font-family: 'Philosopher', sans-serif;
 color: white;
