@@ -1,0 +1,20 @@
+{
+  "short_name": "Saints",
+  "name": "A Saint A Day",
+  "icons": [
+    {
+      "src": "https://i.imgur.com/CW0jPgW.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://i.imgur.com/sn4YO8F.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "blue",
+  "display": "standalone",
+  "theme_color": "#2196f3"
+}

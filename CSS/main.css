@@ -7,11 +7,16 @@ html {
   box-sizing: inherit;
 }
 
+a{
+  color: white;
+  
+}
 
 #container{
 font-family: 'Philosopher', sans-serif;
+color: white;
  max-width:600px;
- background-color: lightblue;
+ background-color: blue;
  margin:auto;
  border: 6px solid navy;
  border-radius: 10px;
@@ -48,12 +53,12 @@ border-radius:25%;
 
 .app-navigation__button, .player-controls__button, .track-controls__button{
  
- background-color: blue;
- color: ghostwhite;
+ background-color: #2196f3;
+ color: black;
  
 }
 .track-controls__button_play{
- font-size: 3em;
+ font-size: 2.6em;
  width: 100px;
  height:100px;
  border-radius:50%;
@@ -84,7 +89,7 @@ border-radius:25%;
 .app-navigation{;
 display: inline-grid;
 grid-row-gap: 20px;
-grid-template-columns: 40% 20% 40%;
+grid-template-columns: 44% 12% 44%;
 grid-template-areas:
     "prev_button . next_button"
     "date_input . saint_input";
