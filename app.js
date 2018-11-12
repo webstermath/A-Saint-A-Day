@@ -1,24 +1,5 @@
- function pushUrlQuery(query){
-    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname +'?'+ query;
-    window.history.pushState({path:newurl},'',newurl);
- }
-   function getUrlParam(key,defaultVal){
-    let urlParams = new URLSearchParams(window.location.search.substring(1));
-    if(urlParams.get(key) === null && defaultVal !== undefined) urlParams = setUrlParam(key, defaultVal);
-    return urlParams.get(key);
-  }
+import {getUrlParam, setUrlParam, makeDataList} from './utilities.js';
 
-  function setUrlParam(key,val){
-    const urlParams = new URLSearchParams(window.location.search.substring(1));
-    urlParams.set(key, val);
-    pushUrlQuery(urlParams.toString());
-    return urlParams;
-  }
-  
-  function makeDataList(id,list){
-    $("#datalists").append($$('datalist').attr('id',id)
-    .append(list.map(item => $$('option',item))));
-  }
 
 // ****** Make Audio App ******
 export function getAudioAppFn(saintCalendar){
@@ -114,9 +95,9 @@ function getFeastWidget(saints){
  const $playerAudio = $$('audio').attr('src',audioUrl).addClass('player__audio')
  $playerAudio[0].load();
  const $playerControls = $$('div').addClass('player-controls')
- const $prevTrackButton = $$('button').text('⮜').addClass('player-controls__button player-controls__button_track_prev');
+ const $prevTrackButton = $$('button').text('<').addClass('player-controls__button player-controls__button_track_prev');
  if(saintLen < 2) $prevTrackButton.hide();
- const $nextTrackButton = $$('button').text('⮞').addClass('player-controls__button player-controls__button_track_next');
+ const $nextTrackButton = $$('button').text('>').addClass('player-controls__button player-controls__button_track_next');
  if(saintLen < 2) $nextTrackButton.hide();
  const $trackControls = $$('div').addClass('track_controls')
  const $trackPlayButton = $$('button').text('►').addClass('track-controls__button track-controls__button_play');

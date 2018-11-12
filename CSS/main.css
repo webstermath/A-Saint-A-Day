@@ -38,24 +38,43 @@ border-radius:25%;
  color: ghostwhite;
 }
 
+.player-controls{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 30px;
+  
+}
 
 .app-navigation__button, .player-controls__button, .track-controls__button{
- display: inline-block;
+ 
+ background-color: blue;
+ color: ghostwhite;
+ 
+}
+.track-controls__button_play{
  font-size: 3em;
  width: 100px;
  height:100px;
- margin:auto:
- margin-top: 20px;
- margin-bottom: 20px;
- background-color: blue;
- color: ghostwhite;
  border-radius:50%;
 }
-
-.player-controls{
-  display: flex;
-  justify-content: center;
+.player-controls__button{
+  font-size: 2em;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
   
+}
+
+.app-navigation__button{
+ font-size: 2em;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 100px;
+ height: 40px;
+ border-radius: 10px;
 }
 
 .track-controls__play_button{
@@ -64,11 +83,11 @@ border-radius:25%;
 
 .app-navigation{;
 display: inline-grid;
-grid-gap: 10px;
-grid-template-columns: 50% 50%;
+grid-row-gap: 20px;
+grid-template-columns: 40% 20% 40%;
 grid-template-areas:
-    "prev_button next_button"
-    "date_input saint_input";
+    "prev_button . next_button"
+    "date_input . saint_input";
 }
 .app-navigation__button_date_prev{
  grid-area: prev_button;
