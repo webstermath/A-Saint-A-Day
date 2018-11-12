@@ -16,9 +16,9 @@ a{
 font-family: 'Philosopher', sans-serif;
 color: white;
  max-width:600px;
- background-color: blue;
+ background-color: darkblue;
  margin:auto;
- border: 6px solid navy;
+ border: 6px solid blue;
  border-radius: 10px;
  height: 100vh;
 }
@@ -39,8 +39,8 @@ display: inline-block;
 font-size: 2em;
 margin: 10px;
 border-radius:25%;
- background-color: blue;
- color: ghostwhite;
+background-color: lightblue;
+color: ghostwhite;
 }
 
 .player-controls{
@@ -53,7 +53,7 @@ border-radius:25%;
 
 .app-navigation__button, .player-controls__button, .track-controls__button{
  
- background-color: #2196f3;
+ background-color: lightblue;
  color: black;
  
 }
