@@ -102,7 +102,7 @@ function getFeastWidget(saints){
  const $nextTrackButton = $$('button').text('>').addClass('player-controls__button player-controls__button_track_next');
  if(saintLen < 2) $nextTrackButton.hide();
  const $trackControls = $$('div').addClass('track_controls')
- const $trackPlayButton = $$('button').text('►').addClass('track-controls__button track-controls__button_play').hide();
+ const $trackPlayButton = $$('button').text('►').addClass('track-controls__button track-controls__button_play invisible')
 
  //functions
  function togglePlay() {
@@ -147,7 +147,7 @@ function getFeastWidget(saints){
 
   $playerAudio[0].addEventListener('canplaythrough',function(e){
    $playerAudio[0].currentTime = saint.start
-   $trackPlayButton.show();
+   $trackPlayButton.removeClass('invisible');
   },{once: true});
  
  // render

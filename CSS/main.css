@@ -7,6 +7,10 @@ html {
   box-sizing: inherit;
 }
 
+.invisible{
+  visibility: hidden;
+}
+
 a{
   color: white;
   
@@ -87,7 +91,7 @@ color: ghostwhite;
 }
 
 .track-controls__play_button{
-  display: none;
+  visibility: hidden;
 }
 
 .app-navigation{;
