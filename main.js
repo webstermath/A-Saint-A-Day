@@ -1,4 +1,5 @@
 import {getAudioAppFn} from './app.js';
+import {getUrlParam, setUrlParam, makeDataList} from './utilities.js';
 
 // if ('serviceWorker' in navigator) {
 //   window.addEventListener('load', function() {
@@ -24,6 +25,7 @@ import {getAudioAppFn} from './app.js';
 async function init(){
   const response = await fetch('https://script.google.com/macros/s/AKfycbyZ8X6XntBJZC5s_0eT08NHan8c1n_htRj_cyxMAuExzrTGDds/exec');
   const data = await response.json();
+  if(getUrlParam('type','today') == 'today') setUrlParam('dateKey',+dateFns.getDayOfYear(new Date()))
   const getAudioApp = getAudioAppFn(data);
   console.log(data);
   $('#saint_app').html(getAudioApp().render());
@@ -33,4 +35,3 @@ async function init(){
 ***** READY *********
 *********************/
 ready(init);
-
