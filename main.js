@@ -29,6 +29,17 @@ async function init(){
   const getAudioApp = getAudioAppFn(data);
   console.log(data);
   $('#saint_app').html(getAudioApp().render());
+
+  document.addEventListener("visibilitychange", function(e){
+    if(document.hidden) return;
+    if(getUrlParam('type') == 'today' && getUrlParam('dateKey') != dateFns.getDayOfYear(new Date())){
+     setUrlParam('dateKey',+dateFns.getDayOfYear(new Date()))
+     $('#saint_app').html(getAudioApp().render());
+      
+    }
+    
+    
+  });
 }
 
 /********************
