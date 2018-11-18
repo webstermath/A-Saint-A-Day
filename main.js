@@ -29,7 +29,7 @@ async function init(){
   const getAudioApp = getAudioAppFn(data);
   console.log(data);
   $('#saint_app').html(getAudioApp().render());
-
+  // reloads to today when page is refocused if type is set to today
   document.addEventListener("visibilitychange", function(e){
     if(document.hidden) return;
     if(getUrlParam('type') == 'today' && getUrlParam('dateKey') != dateFns.getDayOfYear(new Date())){
@@ -37,8 +37,10 @@ async function init(){
      $('#saint_app').html(getAudioApp().render());
       
     }
-    
-    
+  });
+  // detects back and forward events and reloads page accordingly
+  window.addEventListener('popstate', function(event) {
+      $('#saint_app').html(getAudioApp().render());
   });
 }
 
