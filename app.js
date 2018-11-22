@@ -6,7 +6,7 @@ export function getAudioAppFn(saintCalendar){
   
   const saintLookUp = saintCalendar.reduce(function(acc,day,dateKey){
     day.forEach(function(saint,saintIndex){
-      acc[saint.feast]={dateKey,saintIndex}
+      acc[saint.title]={dateKey,saintIndex}
     });
     return acc;
   },{});
@@ -92,7 +92,7 @@ function getFeastWidget(saints){
  
  // elements
  const $container = $$('div').addClass('feast-widget')
- const $title = $$('h3').text(saint.feast).addClass("feast__title");
+ const $title = $$('h3').text(saint.title).addClass("feast__title");
  const $player = $$('div').addClass("player")
  const $playerAudio = $$('audio').attr('src',audioUrl).addClass('player__audio')
  $playerAudio[0].load();
