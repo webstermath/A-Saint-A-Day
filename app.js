@@ -28,37 +28,56 @@ return function getAudioApp(){
  const feastWidget = saints.length ? getFeastWidget(saints).render() : $$('h3').text('No Saint Found').addClass("no-saint-found");
  const $appNavigation = $$('div').addClass('app-navigation');
  const $prevDateButton = $$('button').text('←').addClass('app-navigation__button app-navigation__button_date_prev');
+ const $todayButton = $$('button').text('☀').addClass('app-navigation__button app-navigation__button_date_today');
+ 
  const $nextDateButton = $$('button').text('→').addClass('app-navigation__button app-navigation__button_date_next');
  const $dateInput = $$('_date').addClass('app-navigation__input app-navigation__input_date').attr('title', 'Go To Date');
  const $saintInput = $$('_text').addClass('app-navigation__input app-navigation__input_saint').attr('title', 'Go To Saint')
  .attr('list','saint_list').attr('placeholder','Go To Saint');
  //functions
+ //☀
+
  
  function moveForward(){
-  setUrlParam('dateKey', (dateKey+1)%366);
-  $container.replaceWith(getAudioApp().render());
+   loadOther((dateKey+1)%366);
  }
  
  function moveBack(){
-  setUrlParam('dateKey', (dateKey || 366)-1);
-  $container.replaceWith(getAudioApp().render());
+  loadOther((dateKey || 366)-1);
  }
  
  function goToDate(dateStr){
-   setUrlParam('dateKey',+dateFns.getDayOfYear(new Date(dateStr))+1);
-   $container.replaceWith(getAudioApp().render());
+   loadOther(+dateFns.getDayOfYear(new Date(dateStr))+1);
+  // setUrlParam('dateKey',+dateFns.getDayOfYear(new Date(dateStr))+1);
+  // $container.replaceWith(getAudioApp().render());
  }
  
   function goToSaint(saintName){
    const saint = saintLookUp[saintName];
    if(!saint) return;
-   setUrlParam('dateKey',saint.dateKey);
-   setUrlParam('track',saint.saintIndex);
+   loadOther(saint.dateKey, saint.saintIndex);
+  // setUrlParam('dateKey',saint.dateKey);
+  // setUrlParam('track',saint.saintIndex);
+  // $container.replaceWith(getAudioApp().render());
+ }
+ 
+ function loadOther(dateKey,track){
+   setUrlParam('type','other');
+   setUrlParam('dateKey',dateKey);
+   setUrlParam('track',track || 0);
    $container.replaceWith(getAudioApp().render());
+ }
+  function loadToday(){
+   setUrlParam('type','today');
+   setUrlParam('dateKey',+dateFns.getDayOfYear(new Date()));
+   setUrlParam('track', 0);
+   $container.replaceWith(getAudioApp().render());
+   
  }
  
  // events
  $prevDateButton.click(moveBack);
+ $todayButton.click(loadToday)
  $nextDateButton.click(moveForward);
  $dateInput.change(e => goToDate(e.target.value));
  $saintInput.change(e => goToSaint(e.target.value));
@@ -70,6 +89,7 @@ return function getAudioApp(){
    .append(feastWidget)
    .append($appNavigation
     .append($prevDateButton)
+    .append($todayButton)
     .append($nextDateButton)
     .append($dateInput)
     .append($saintInput)

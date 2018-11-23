@@ -12,3 +12,9 @@ later
 - use webpack to size pictures
 - have "go to saint" and "go to date" search
 -- create object {saint: {dateKey: ..., track: ...}}
+
+
+Newest
+- add today icon that goes to today with type today
+- change type to other when searching through tracks
+-change type to mode

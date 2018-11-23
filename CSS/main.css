@@ -80,7 +80,7 @@ color: ghostwhite;
 }
 
 .app-navigation__button{
- font-size: 3em;
+ font-size: 2em;
  display: flex;
  flex-direction: column;
  justify-content: center;
@@ -97,10 +97,10 @@ color: ghostwhite;
 .app-navigation{;
 display: inline-grid;
 grid-row-gap: 20px;
-grid-template-columns: 44% 12% 44%;
+grid-template-columns: 30% 10% 20% 10% 30%;
 grid-template-areas:
-    "prev_button . next_button"
-    "date_input . saint_input";
+    "prev_button .  today_button . next_button"
+    "date_input . . . saint_input";
 }
 .app-navigation__button_date_prev{
  grid-area: prev_button;
@@ -109,6 +109,11 @@ grid-template-areas:
 
 .app-navigation__button_date_next{
  grid-area: next_button;
+}
+
+.app-navigation__button_date_today{
+ grid-area: today_button;
+ justify-self: center;
 }
 
 .app-navigation__input_date{
