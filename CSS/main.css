@@ -20,9 +20,20 @@ body{
   background-color: black;
 }
 
-#container{
-font-family: 'Philosopher', sans-serif;
-color: white;
+.saint-app{
+ display: grid;
+ grid-template-columns: 100%;
+ grid-template-rows: 70px 80px 50px 60px 1fr 40px 20px;
+ grid-template-areas:
+ "search"
+ "title"
+ "subtitle"
+ "date-title"
+ "player"
+ "navigator"
+ "footer";
+ font-family: 'Philosopher', sans-serif;
+ color: white;
  max-width:600px;
  background-color: darkblue;
  margin:auto;
@@ -30,16 +41,66 @@ color: white;
  border-radius: 10px;
  height: 100vh;
 }
-h1{
- text-align: center;
+.app-search{
+  grid-area: search;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 4px;
+  
 }
-#subtitle, #subtitle2{
- text-align: center;
- font-style: italic
+.app-search__label_date{
+ font-size: 16px;
 }
 
-#saint_app{
- text-align:center;
+.app-search__label_saint{
+ font-size: 16px;
+ justify-self: end;
+}
+
+.player-app__title{
+  grid-area: title;
+  text-align: center;
+  
+}
+.player-app__title h1{
+  margin: 0;
+  font-size: 3rem;
+  
+}
+
+.player-app__subtitle{
+  grid-area: subtitle;
+  text-align: center;
+ font-style: italic;
+}
+
+.player-app__subtitle h4{
+  margin: 0;
+}
+
+.saint-app__date-title{
+  grid-area: date-title;
+  text-align: center;
+  font-size: 2rem;
+  margin: 0;
+  
+}
+
+.feast-widget{
+  grid-area: player;
+  text-align: center;
+  
+}
+.feast__title{
+  font-size: 1.6rem;
+  margin: 0;
+  margin-bottom: 10px;
+  
+}
+
+.app-navigation{
+  grid-area: navigator;
+  
 }
 
 .control_button{
@@ -66,9 +127,11 @@ color: ghostwhite;
  
 }
 .track-controls__button_play{
- font-size: 2.6em;
- width: 100px;
- height:100px;
+ font-size: 6em;
+ width: 50vmin;
+ height:50vmin;
+ max-width: 200px;
+ max-height: 200px;
  border-radius:50%;
 }
 .player-controls__button{
@@ -100,7 +163,6 @@ grid-row-gap: 20px;
 grid-template-columns: 30% 10% 20% 10% 30%;
 grid-template-areas:
     "prev_button .  today_button . next_button"
-    "date_input . . . saint_input";
 }
 .app-navigation__button_date_prev{
  grid-area: prev_button;
@@ -116,15 +178,4 @@ grid-template-areas:
  justify-self: center;
 }
 
-.app-navigation__input_date{
- grid-area: date_input;
- width: 150px;
- font-size: 16px;
- justify-self: end;
-}
 
-.app-navigation__input_saint{
- grid-area: saint_input;
- width: 150px;
- font-size: 16px;
-}

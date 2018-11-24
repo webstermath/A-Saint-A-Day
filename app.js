@@ -16,24 +16,36 @@ export function getAudioAppFn(saintCalendar){
 
 return function getAudioApp(){
  // data
-  
+  const livesOfTheSaintsUrl='https://librivox.org/lives-of-the-saints-with-reflections-for-every-day-in-the-year-by-alban-butler/';
+  const marieThereseUrl='https://catholicaudiobooks.wordpress.com/';
   const dateKey = +getUrlParam('dateKey',+dateFns.getDayOfYear(new Date()))
   
   const saints = saintCalendar[dateKey];
   console.log(saints);
  //elements
  const $container = $$('div').addClass('saint-app');
+ 
+const $appTitle =$$('div').addClass('player-app__title')
+ .append($$('h1').text('A Saint A Day'));
+ 
+const $appSubTitle =$$('div').addClass('player-app__subtitle')
+ .append($$('h4').html(`From <a href="${livesOfTheSaintsUrl}" rel="noopener" target="_BLANK">The Lives of The Saints</a>`))
+ .append($$('h4').html(`Read by <a href="${marieThereseUrl}" rel="noopener" target="_BLANK">Maria Therese</a>`));
+
  const $dateTitle = $$('h2')
  .text(dateFns.format(dateFns.setDayOfYear(new Date(),dateKey),'dddd, MMMM D')).addClass("saint-app__date-title");
  const feastWidget = saints.length ? getFeastWidget(saints).render() : $$('h3').text('No Saint Found').addClass("no-saint-found");
+ 
  const $appNavigation = $$('div').addClass('app-navigation');
  const $prevDateButton = $$('button').text('←').addClass('app-navigation__button app-navigation__button_date_prev');
  const $todayButton = $$('button').text('☀').addClass('app-navigation__button app-navigation__button_date_today');
- 
  const $nextDateButton = $$('button').text('→').addClass('app-navigation__button app-navigation__button_date_next');
- const $dateInput = $$('_date').addClass('app-navigation__input app-navigation__input_date').attr('title', 'Go To Date');
- const $saintInput = $$('_text').addClass('app-navigation__input app-navigation__input_saint').attr('title', 'Go To Saint')
- .attr('list','saint_list').attr('placeholder','Go To Saint');
+
+ const $appSearch = $$('div').addClass('app-search');
+ const $dateLabel =$$('label').text('📅').addClass('app-search__label app-search__label_date').attr('title', 'Go To Date');
+ const $dateInput = $$('_date').addClass('app-search__input app-search__input_date').hide();
+ const $saintLabel =$$('label').text('🔎').addClass('app-search__label app-search__label_saint').attr('title', 'Go To Saint')
+ const $saintInput = $$('_text').addClass('app-search__input app-search__input_saint').attr('list','saint_list').attr('placeholder','Go To Saint').hide();
  //functions
  //☀
 
@@ -81,18 +93,29 @@ return function getAudioApp(){
  $nextDateButton.click(moveForward);
  $dateInput.change(e => goToDate(e.target.value));
  $saintInput.change(e => goToSaint(e.target.value));
+ $dateLabel.hover(evt => $dateInput.show(), evt => $dateInput.hide());
+ $saintLabel.hover(evt => $saintInput.show(), evt => $saintInput.hide());
+ 
  // render
  
  function render(){
    return $container
+   .append($appSearch
+    .append($dateLabel
+     .append($dateInput)
+    )
+    .append($saintLabel
+     .append($saintInput)
+    )
+   )
+   .append($appTitle)
+   .append($appSubTitle)
    .append($dateTitle)
    .append(feastWidget)
    .append($appNavigation
     .append($prevDateButton)
     .append($todayButton)
     .append($nextDateButton)
-    .append($dateInput)
-    .append($saintInput)
    );
  }
  
