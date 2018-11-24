@@ -14,7 +14,7 @@ export function getAudioAppFn(saintCalendar){
   makeDataList('saint_list',Object.keys(saintLookUp).map(saint => ({html: saint})))
   console.log(saintLookUp);
 
-return function getAudioApp(){
+ return function getAudioApp(){
  // data
   const livesOfTheSaintsUrl='https://librivox.org/lives-of-the-saints-with-reflections-for-every-day-in-the-year-by-alban-butler/';
   const marieThereseUrl='https://catholicaudiobooks.wordpress.com/';
@@ -22,15 +22,16 @@ return function getAudioApp(){
   
   const saints = saintCalendar[dateKey];
   console.log(saints);
+  
  //elements
  const $container = $$('div').addClass('saint-app');
  
-const $appTitle =$$('div').addClass('player-app__title')
- .append($$('h1').text('A Saint A Day'));
+ const $appTitle =$$('div').addClass('player-app__title')
+  .append($$('h1').text('A Saint A Day'));
  
-const $appSubTitle =$$('div').addClass('player-app__subtitle')
- .append($$('h4').html(`From <a href="${livesOfTheSaintsUrl}" rel="noopener" target="_BLANK">The Lives of The Saints</a>`))
- .append($$('h4').html(`Read by <a href="${marieThereseUrl}" rel="noopener" target="_BLANK">Maria Therese</a>`));
+ const $appSubTitle =$$('div').addClass('player-app__subtitle')
+  .append($$('h4').html(`From <a href="${livesOfTheSaintsUrl}" rel="noopener" target="_BLANK">The Lives of The Saints</a>`))
+  .append($$('h4').html(`Read by <a href="${marieThereseUrl}" rel="noopener" target="_BLANK">Maria Therese</a>`));
 
  const $dateTitle = $$('h2')
  .text(dateFns.format(dateFns.setDayOfYear(new Date(),dateKey),'dddd, MMMM D')).addClass("saint-app__date-title");
@@ -60,17 +61,12 @@ const $appSubTitle =$$('div').addClass('player-app__subtitle')
  
  function goToDate(dateStr){
    loadOther(+dateFns.getDayOfYear(new Date(dateStr))+1);
-  // setUrlParam('dateKey',+dateFns.getDayOfYear(new Date(dateStr))+1);
-  // $container.replaceWith(getAudioApp().render());
  }
  
-  function goToSaint(saintName){
+ function goToSaint(saintName){
    const saint = saintLookUp[saintName];
    if(!saint) return;
    loadOther(saint.dateKey, saint.saintIndex);
-  // setUrlParam('dateKey',saint.dateKey);
-  // setUrlParam('track',saint.saintIndex);
-  // $container.replaceWith(getAudioApp().render());
  }
  
  function loadOther(dateKey,track){
@@ -79,12 +75,12 @@ const $appSubTitle =$$('div').addClass('player-app__subtitle')
    setUrlParam('track',track || 0);
    $container.replaceWith(getAudioApp().render());
  }
-  function loadToday(){
+ 
+ function loadToday(){
    setUrlParam('type','today');
    setUrlParam('dateKey',+dateFns.getDayOfYear(new Date()));
    setUrlParam('track', 0);
    $container.replaceWith(getAudioApp().render());
-   
  }
  
  // events
@@ -102,7 +98,6 @@ const $appSubTitle =$$('div').addClass('player-app__subtitle')
  }));
  
  // render
- 
  function render(){
    return $container
    .append($appSearch
@@ -118,15 +113,13 @@ const $appSubTitle =$$('div').addClass('player-app__subtitle')
    .append($dateTitle)
    .append(feastWidget)
    .append($appNavigation
-    .append($prevDateButton)
-    .append($todayButton)
-    .append($nextDateButton)
+    .append($prevDateButton, $todayButton, $nextDateButton)
    );
  }
  
  return {render}
  
-}
+ }
 }
 
 
