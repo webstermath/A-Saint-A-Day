@@ -23,7 +23,7 @@ body{
 .saint-app{
  display: grid;
  grid-template-columns: 100%;
- grid-template-rows: 40px 60px 60px 60px 1fr 80px 20px;
+ grid-template-rows: 36px 60px 60px 60px 1fr 80px 36px;
  grid-template-areas:
  "search"
  "title"
@@ -51,12 +51,13 @@ body{
   padding: 4px;
   
 }
-.app-search__label_date{
+.app-search__label{
  font-size: 14px;
 }
-
+.app-search__label::first-letter{
+ font-size: 24px;
+}
 .app-search__label_saint{
- font-size: 14px;
  justify-self: end;
 }
 .app-search__input_saint{
@@ -183,5 +184,9 @@ grid-template-areas:
  justify-self: center;
 }
 
-
+.player-footer{
+  grid-area: footer;
+  background-color: #303030;
+  
+}
 

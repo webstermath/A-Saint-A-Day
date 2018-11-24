@@ -45,6 +45,7 @@ export function getPlayerAppFn(saintCalendar){
  const $saintLabel =$$('label').text('🔎').addClass('app-search__label app-search__label_saint').attr('title', 'Go To Saint'); //.attr('tabindex',0)
  const $saintInput = $$('_text').addClass('app-search__input app-search__input_saint').attr('list','saint_list').attr('placeholder','Go To Saint').hide(); //
  
+ const $footer = $$('div').addClass('player-footer')
  //functions
  function moveForward(){
    loadOther((dateKey+1)%366);
@@ -109,7 +110,8 @@ export function getPlayerAppFn(saintCalendar){
    .append(audioWidget)
    .append($appNavigation
     .append($prevDateButton, $todayButton, $nextDateButton)
-   );
+   )
+   .append($footer);
  }
  
  return {render}
