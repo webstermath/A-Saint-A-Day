@@ -59,11 +59,6 @@ export function getAudioWidget(saints){
   
   $prevTrackButton.click(prevTrack)
   $nextTrackButton.click(nextTrack)
-  if(saintLen < 2){
-   $prevTrackButton.click(prevTrack);
-   $nextTrackButton.click(nextTrack);
-  }
-
   $playerAudio[0].addEventListener('canplaythrough',function(e){
    $playerAudio[0].currentTime = saint.start
    $trackPlayButton.removeClass('invisible');

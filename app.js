@@ -47,10 +47,8 @@ export function getAudioAppFn(saintCalendar){
  const $dateInput = $$('_date').addClass('app-search__input app-search__input_date').hide();
  const $saintLabel =$$('label').text('🔎').addClass('app-search__label app-search__label_saint').attr('title', 'Go To Saint'); //.attr('tabindex',0)
  const $saintInput = $$('_text').addClass('app-search__input app-search__input_saint').attr('list','saint_list').attr('placeholder','Go To Saint').hide(); //
- //functions
- //☀
-
  
+ //functions
  function moveForward(){
    loadOther((dateKey+1)%366);
  }
