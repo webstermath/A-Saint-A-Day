@@ -23,7 +23,7 @@ body{
 .saint-app{
  display: grid;
  grid-template-columns: 100%;
- grid-template-rows: 70px 80px 50px 60px 1fr 40px 20px;
+ grid-template-rows: 40px 80px 50px 60px 1fr 40px 20px;
  grid-template-areas:
  "search"
  "title"
