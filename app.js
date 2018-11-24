@@ -94,7 +94,12 @@ const $appSubTitle =$$('div').addClass('player-app__subtitle')
  $dateInput.change(e => goToDate(e.target.value));
  $saintInput.change(e => goToSaint(e.target.value));
  $dateLabel.hover(evt => $dateInput.show(), evt => $dateInput.hide());
- $saintLabel.hover(evt => $saintInput.show(), evt => $saintInput.hide());
+ $saintLabel.hover(evt => $saintInput.show(),
+ evt => $container.mouseover(e => {
+   if(e.target.classList.contains('app-search__input_saint')) return;
+   $saintInput.hide();
+   $container.off('mouseover');
+ }));
  
  // render
  
