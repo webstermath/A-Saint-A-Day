@@ -1,4 +1,4 @@
-import {getAudioAppFn} from './app.js';
+import {getPlayerAppFn} from './app.js';
 import {getUrlParam, setUrlParam, makeDataList} from './utilities.js';
 
 // if ('serviceWorker' in navigator) {
@@ -26,21 +26,21 @@ async function init(){
   const response = await fetch('https://script.google.com/macros/s/AKfycbyZ8X6XntBJZC5s_0eT08NHan8c1n_htRj_cyxMAuExzrTGDds/exec');
   const data = await response.json();
   if(getUrlParam('type','today') == 'today') setUrlParam('dateKey',+dateFns.getDayOfYear(new Date()))
-  const getAudioApp = getAudioAppFn(data);
+  const getPlayerApp = getPlayerAppFn(data);
   console.log(data);
-  $('#saint_app').html(getAudioApp().render());
+  $('#saint_app').html(getPlayerApp().render());
   // reloads to today when page is refocused if type is set to today
   document.addEventListener("visibilitychange", function(e){
     if(document.hidden) return;
     if(getUrlParam('type') == 'today' && getUrlParam('dateKey') != dateFns.getDayOfYear(new Date())){
      setUrlParam('dateKey',+dateFns.getDayOfYear(new Date()))
-     $('#saint_app').html(getAudioApp().render());
+     $('#saint_app').html(getPlayerApp().render());
       
     }
   });
   // detects back and forward events and reloads page accordingly
   window.addEventListener('popstate', function(event) {
-      $('#saint_app').html(getAudioApp().render());
+      $('#saint_app').html(getPlayerApp().render());
   });
 }
 

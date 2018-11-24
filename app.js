@@ -2,7 +2,7 @@ import {getUrlParam, setUrlParam, makeDataList} from './utilities.js';
 import {getAudioWidget} from './audio.js';
 
 // ****** Make Audio App ******
-export function getAudioAppFn(saintCalendar){
+export function getPlayerAppFn(saintCalendar){
   
   const saintLookUp = saintCalendar.reduce(function(acc,day,dateKey){
     day.forEach(function(saint,saintIndex){
@@ -14,7 +14,7 @@ export function getAudioAppFn(saintCalendar){
   makeDataList('saint_list',Object.keys(saintLookUp).map(saint => ({html: saint})))
   console.log(saintLookUp);
 
- return function getAudioApp(){
+ return function getPlayerApp(){
  // data
   const livesOfTheSaintsUrl='https://librivox.org/lives-of-the-saints-with-reflections-for-every-day-in-the-year-by-alban-butler/';
   const marieThereseUrl='https://catholicaudiobooks.wordpress.com/';
@@ -71,14 +71,14 @@ export function getAudioAppFn(saintCalendar){
    setUrlParam('type','other');
    setUrlParam('dateKey',dateKey);
    setUrlParam('track',track || 0);
-   $container.replaceWith(getAudioApp().render());
+   $container.replaceWith(getPlayerApp().render());
  }
  
  function loadToday(){
    setUrlParam('type','today');
    setUrlParam('dateKey',+dateFns.getDayOfYear(new Date()));
    setUrlParam('track', 0);
-   $container.replaceWith(getAudioApp().render());
+   $container.replaceWith(getPlayerApp().render());
  }
  
  // events
