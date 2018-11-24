@@ -42,10 +42,10 @@ const $appSubTitle =$$('div').addClass('player-app__subtitle')
  const $nextDateButton = $$('button').text('→').addClass('app-navigation__button app-navigation__button_date_next');
 
  const $appSearch = $$('div').addClass('app-search');
- const $dateLabel =$$('label').text('📅').addClass('app-search__label app-search__label_date').attr('title', 'Go To Date');
+ const $dateLabel =$$('label').text('📅').addClass('app-search__label app-search__label_date').attr('title', 'Go To Date'); //.attr('tabindex',0)
  const $dateInput = $$('_date').addClass('app-search__input app-search__input_date').hide();
- const $saintLabel =$$('label').text('🔎').addClass('app-search__label app-search__label_saint').attr('title', 'Go To Saint')
- const $saintInput = $$('_text').addClass('app-search__input app-search__input_saint').attr('list','saint_list').attr('placeholder','Go To Saint').hide();
+ const $saintLabel =$$('label').text('🔎').addClass('app-search__label app-search__label_saint').attr('title', 'Go To Saint'); //.attr('tabindex',0)
+ const $saintInput = $$('_text').addClass('app-search__input app-search__input_saint').attr('list','saint_list').attr('placeholder','Go To Saint').hide(); //
  //functions
  //☀
 
