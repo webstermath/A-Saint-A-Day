@@ -31,8 +31,7 @@ export function getPlayerAppFn(saintCalendar){
   .append($$('h4').html(`From <a href="${livesOfTheSaintsUrl}" rel="noopener" target="_BLANK">The Lives of The Saints</a>`))
   .append($$('h4').html(`Read by <a href="${marieThereseUrl}" rel="noopener" target="_BLANK">Maria Therese</a>`));
 
- const $dateTitle = $$('h2')
- .text(dateFns.format(dateFns.setDayOfYear(new Date(),dateKey),'dddd, MMMM D')).addClass("saint-app__date-title");
+ const $dateTitle = $$('h2').text(dateFns.format(dateFns.setDayOfYear(new Date(),dateKey),'dddd, MMMM D')).addClass("saint-app__date-title");
  const audioWidget = saints.length ? getAudioWidget(saints).render() : $$('h3').text('No Saint Found').addClass("no-saint-found");
  
  const $appNavigation = $$('div').addClass('app-navigation');
