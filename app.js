@@ -11,8 +11,7 @@ export function getPlayerAppFn(saintCalendar){
     return acc;
   },{});
   
-  makeDataList('saint_list',Object.keys(saintLookUp).map(saint => ({html: saint})))
-  console.log(saintLookUp);
+  makeDataList('saint_list',Object.keys(saintLookUp).map(saint => ({html: saint})));
 
  return function getPlayerApp(){
  // data
@@ -21,7 +20,6 @@ export function getPlayerAppFn(saintCalendar){
   const dateKey = +getUrlParam('dateKey',+dateFns.getDayOfYear(new Date()))
   
   const saints = saintCalendar[dateKey];
-  console.log(saints);
   
  //elements
  const $container = $$('div').addClass('saint-app');
@@ -35,7 +33,7 @@ export function getPlayerAppFn(saintCalendar){
 
  const $dateTitle = $$('h2')
  .text(dateFns.format(dateFns.setDayOfYear(new Date(),dateKey),'dddd, MMMM D')).addClass("saint-app__date-title");
- const feastWidget = saints.length ? getAudioWidget(saints).render() : $$('h3').text('No Saint Found').addClass("no-saint-found");
+ const audioWidget = saints.length ? getAudioWidget(saints).render() : $$('h3').text('No Saint Found').addClass("no-saint-found");
  
  const $appNavigation = $$('div').addClass('app-navigation');
  const $prevDateButton = $$('button').text('←').addClass('app-navigation__button app-navigation__button_date_prev');
@@ -109,7 +107,7 @@ export function getPlayerAppFn(saintCalendar){
    .append($appTitle)
    .append($appSubTitle)
    .append($dateTitle)
-   .append(feastWidget)
+   .append(audioWidget)
    .append($appNavigation
     .append($prevDateButton, $todayButton, $nextDateButton)
    );
