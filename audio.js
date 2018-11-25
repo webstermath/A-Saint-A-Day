@@ -42,15 +42,11 @@ export function getAudioWidget(saints){
  }
  
  function nextTrack(){
-   changeTrack((saintIndex+1) % saintLen)
-  //setUrlParam('track',(saintIndex+1) % saintLen);
-  //$container.replaceWith(getAudioWidget(saints).render());
+   changeTrack((saintIndex+1) % saintLen);
  }
 
  function prevTrack(){
-  changeTrack((saintIndex || saintLen) - 1)
-  //setUrlParam('track',(saintIndex || saintLen) - 1);
-  //$container.replaceWith(getAudioWidget(saints).render());
+  changeTrack((saintIndex || saintLen) - 1);
  }
  
  function changeTrack(track){

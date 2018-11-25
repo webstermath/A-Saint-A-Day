@@ -15,6 +15,11 @@ export function makeDataList(id,list){
   $("#datalists").append($$('datalist').attr('id',id)
   .append(list.map(item => $$('option',item))));
 }
+export function dateStrToDate(dateStr){
+  const [year, month, day] = dateStr.split('-');
+  return new Date(year, month - 1, day)
+  
+}
 
  function pushUrlQuery(query){
     var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname +'?'+ query;

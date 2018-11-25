@@ -1,12 +1,13 @@
-import {getUrlParam, setUrlParam, makeDataList} from './utilities.js';
+import {getUrlParam, setUrlParam, makeDataList, dateStrToDate} from './utilities.js';
 import {getAudioWidget} from './audio.js';
 
 // ****** Make Audio App ******
 export function getPlayerAppFn(saintCalendar){
-  
+  const today = new Date();
+  const isLeapYear = !(today.getFullYear() % 4);
   const saintLookUp = saintCalendar.reduce(function(acc,day,dateKey){
     day.forEach(function(saint,saintIndex){
-      acc[saint.title]={dateKey,saintIndex}
+      acc[saint.title]={dateKey: (!isLeapYear && dateKey > 59) ? dateKey  : dateKey + 1,saintIndex}
     });
     return acc;
   },{});
@@ -15,11 +16,12 @@ export function getPlayerAppFn(saintCalendar){
 
  return function getPlayerApp(){
  // data
+
   const livesOfTheSaintsUrl='https://librivox.org/lives-of-the-saints-with-reflections-for-every-day-in-the-year-by-alban-butler/';
   const marieThereseUrl='https://catholicaudiobooks.wordpress.com/';
-  const dateKey = +getUrlParam('dateKey',+dateFns.getDayOfYear(new Date()))
-  
-  const saints = saintCalendar[dateKey];
+  const dateKey = +getUrlParam('dateKey', dateFns.getDayOfYear(new Date()))
+  console.log(saintCalendar)
+  const saints = saintCalendar[(!isLeapYear && dateKey > 59) ? dateKey  : dateKey - 1];
   
  //elements
  const $container = $$('div').addClass('saint-app');
@@ -32,7 +34,7 @@ export function getPlayerAppFn(saintCalendar){
   .append($$('h4').html(`Read by <a href="${marieThereseUrl}" rel="noopener" target="_BLANK">Maria Therese</a>`));
 
  const $dateTitle = $$('h2').text(dateFns.format(dateFns.setDayOfYear(new Date(),dateKey),'dddd, MMMM D')).addClass("saint-app__date-title");
- const audioWidget = saints.length ? getAudioWidget(saints).render() : $$('h3').text('No Saint Found').addClass("no-saint-found");
+ const audioWidget = (saints && saints.length) ? getAudioWidget(saints).render() : $$('h3').text('No Saint Found').addClass("no-saint-found");
  
  const $appNavigation = $$('div').addClass('app-navigation');
  const $prevDateButton = $$('button').text('←').addClass('app-navigation__button app-navigation__button_date_prev');
@@ -48,15 +50,16 @@ export function getPlayerAppFn(saintCalendar){
  const $footer = $$('div').addClass('player-footer')
  //functions
  function moveForward(){
-   loadOther((dateKey+1)%366);
+   loadOther((dateKey % (isLeapYear ? 366 : 365)) + 1);
  }
  
  function moveBack(){
-  loadOther((dateKey || 366)-1);
+  loadOther((dateKey - 1) || (isLeapYear ? 366 : 365));
  }
  
  function goToDate(dateStr){
-   loadOther(+dateFns.getDayOfYear(new Date(dateStr))+1);
+
+   loadOther(dateFns.getDayOfYear(dateStrToDate(dateStr)));
  }
  
  function goToSaint(saintName){
@@ -76,7 +79,7 @@ export function getPlayerAppFn(saintCalendar){
  function loadToday(){
    $('#wait-layer').show();
    setUrlParam('type','today');
-   setUrlParam('dateKey',+dateFns.getDayOfYear(new Date()));
+   setUrlParam('dateKey',dateFns.getDayOfYear(new Date()) % 366);
    setUrlParam('track', 0);
    $container.replaceWith(getPlayerApp().render());
  }
