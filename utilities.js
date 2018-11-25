@@ -4,9 +4,10 @@ export function getUrlParam(key,defaultVal){
   return urlParams.get(key);
 }
 
-export function setUrlParam(key,val){
+export function setUrlParam(...args){
   const urlParams = new URLSearchParams(window.location.search.substring(1));
-  urlParams.set(key, val);
+  if(args.length > 1) urlParams.set(...args);
+  else Object.keys(args[0]).forEach(key => urlParams.set(key, args[0][key]))
   pushUrlQuery(urlParams.toString());
   return urlParams;
 }

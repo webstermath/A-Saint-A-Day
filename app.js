@@ -13,7 +13,11 @@ export function makePlayerApp(saintCalendar){
     });
     return acc;
   },{});
+  
   makeDataList('saint_list',Object.keys(saintLookUp).map(saint => ({html: saint})));
+  
+  const playerApp = getPlayerApp();
+  
    // reloads to today when page is refocused if type is set to today
   document.addEventListener("visibilitychange", function(e){
     if(document.hidden) return;
@@ -27,7 +31,9 @@ export function makePlayerApp(saintCalendar){
   window.addEventListener('popstate', function(event) {
       $('#saint_app').html(getPlayerApp().render());
   });
- $('#saint_app').html(getPlayerApp().render());
+  
+ $('#saint_app').html(playerApp.render());
+ 
  function getPlayerApp(){
  // data
 
@@ -84,17 +90,21 @@ export function makePlayerApp(saintCalendar){
  
  function loadOther(dateKey,track){
    $('#wait-layer').show();
-   setUrlParam('type','other');
-   setUrlParam('dateKey',dateKey);
-   setUrlParam('track',track || 0);
+   setUrlParam({
+     type: 'other',
+     dateKey: dateKey,
+     track: track || 0
+   });
    $container.replaceWith(getPlayerApp().render());
  }
  
  function loadToday(){
    $('#wait-layer').show();
-   setUrlParam('type','today');
-   setUrlParam('dateKey',dateToDateStr(new Date()));
-   setUrlParam('track', 0);
+   setUrlParam({
+     type: 'today',
+     dateKey: dateToDateStr(new Date()),
+     track: 0
+   });
    $container.replaceWith(getPlayerApp().render());
  }
  
