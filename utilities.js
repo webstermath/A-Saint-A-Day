@@ -20,8 +20,15 @@ export function dateStrToDate(dateStr){
   return new Date(year, month - 1, day)
   
 }
+export function dateToDateStr(date){
+  return [date.getFullYear(), date.getMonth()+1, date.getDate()].map(lead0).join('-')
+}
 
  function pushUrlQuery(query){
     var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname +'?'+ query;
     window.history.pushState({path:newurl},'',newurl);
  }
+ 
+ function lead0(n){
+  return String(n > 9 ? n : '0' + n );
+}
