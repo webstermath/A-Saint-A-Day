@@ -2,8 +2,7 @@ import {getUrlParam, setUrlParam, makeDataList, dateStrToDate, dateToDateStr} fr
 import {getAudioWidget} from './audio.js';
 
 // ****** Make Audio App ******
-export function makePlayerApp(saintCalendar){
-  
+export function makePlayerApp(root, saintCalendar){
   if(getUrlParam('type','today') == 'today') setUrlParam('dateKey',dateToDateStr(new Date()));
   
   const saintLookUp = Object.keys(saintCalendar).reduce(function(acc,dateKey){
@@ -24,15 +23,15 @@ export function makePlayerApp(saintCalendar){
     const todayDateStr =  dateToDateStr(new Date());
     if(getUrlParam('type') == 'today' && getUrlParam('dateKey') != todayDateStr){
      setUrlParam('dateKey', todayDateStr)
-     $('#saint_app').html(getPlayerApp().render());
+     $(root).html(getPlayerApp().render());
     }
   });
     // detects back and forward events and reloads page accordingly
   window.addEventListener('popstate', function(event) {
-      $('#saint_app').html(getPlayerApp().render());
+      $(root).html(getPlayerApp().render());
   });
   
- $('#saint_app').html(playerApp.render());
+ $(root).html(playerApp.render());
  
  function getPlayerApp(){
  // data
