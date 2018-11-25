@@ -66,6 +66,7 @@ export function getPlayerAppFn(saintCalendar){
  }
  
  function loadOther(dateKey,track){
+   $('#wait-layer').show();
    setUrlParam('type','other');
    setUrlParam('dateKey',dateKey);
    setUrlParam('track',track || 0);
@@ -73,6 +74,7 @@ export function getPlayerAppFn(saintCalendar){
  }
  
  function loadToday(){
+   $('#wait-layer').show();
    setUrlParam('type','today');
    setUrlParam('dateKey',+dateFns.getDayOfYear(new Date()));
    setUrlParam('track', 0);

@@ -8,7 +8,7 @@ export function getAudioWidget(saints){
  const saint = saints[saintIndex];
  const saintLen = saints.length;
  const audioUrl = saint.url;
- 
+ if(!audioUrl) $('#wait-layer').hide();
  // elements
  const $container = $$('div').addClass('feast-widget')
  const $title = $$('h3').text(saint.title).addClass("feast__title");
@@ -42,13 +42,21 @@ export function getAudioWidget(saints){
  }
  
  function nextTrack(){
-  setUrlParam('track',(saintIndex+1) % saintLen);
-  $container.replaceWith(getAudioWidget(saints).render());
+   changeTrack((saintIndex+1) % saintLen)
+  //setUrlParam('track',(saintIndex+1) % saintLen);
+  //$container.replaceWith(getAudioWidget(saints).render());
  }
 
  function prevTrack(){
-  setUrlParam('track',(saintIndex || saintLen) - 1);
-  $container.replaceWith(getAudioWidget(saints).render());
+  changeTrack((saintIndex || saintLen) - 1)
+  //setUrlParam('track',(saintIndex || saintLen) - 1);
+  //$container.replaceWith(getAudioWidget(saints).render());
+ }
+ 
+ function changeTrack(track){
+   $('#wait-layer').show();
+   setUrlParam('track',track);
+   $container.replaceWith(getAudioWidget(saints).render());
  }
  
   // events
@@ -62,6 +70,7 @@ export function getAudioWidget(saints){
   $playerAudio[0].addEventListener('canplaythrough',function(e){
    $playerAudio[0].currentTime = saint.start
    $trackPlayButton.removeClass('invisible');
+   $('#wait-layer').hide();
   },{once: true});
  
  // render
