@@ -133,9 +133,9 @@ color: ghostwhite;
  
 }
 .track-controls__button_play{
- font-size: 6em;
- width: 50vmin;
- height:50vmin;
+ font-size: 4rem;
+ width: 60vmin;
+ height:60vmin;
  max-width: 200px;
  max-height: 200px;
  border-radius:50%;
