@@ -3,12 +3,12 @@
   "name": "A Saint A Day",
   "icons": [
     {
-      "src": "https://i.imgur.com/CW0jPgW.png",
+      "src": "/images/asaintaday_icon_192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "https://i.imgur.com/sn4YO8F.png",
+      "src": "/images/asaintaday_icon_512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
