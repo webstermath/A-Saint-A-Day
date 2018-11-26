@@ -139,10 +139,10 @@ export function makePlayerApp(root, saintCalendar){
    .append($appTitle)
    .append($appSubTitle)
    .append($dateTitle)
-   .append(audioWidget)
    .append($appNavigation
     .append($prevDateButton, $todayButton, $nextDateButton)
    )
+   .append(audioWidget)
    .append($footer);
  }
  

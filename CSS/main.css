@@ -30,14 +30,14 @@ body{
 .saint-app{
  display: grid;
  grid-template-columns: 100%;
- grid-template-rows: 50px 60px 60px 60px 1fr 80px 50px;
+ grid-template-rows: 50px 60px 60px 60px 90px 1fr 50px;
  grid-template-areas:
  "search"
  "title"
  "subtitle"
  "date-title"
- "player"
  "navigator"
+ "player"
  "footer";
  font-family: 'Philosopher', sans-serif;
  color: white;
