@@ -68,6 +68,10 @@ export function makePlayerApp(root, saintCalendar){
 
  
  const $footer = $$('div').addClass('player-footer')
+ const $githubLink = $$('a').addClass('fab fa-github github-icon')
+ .attr('href','https://github.com/webstermath/A-Saint-A-Day').attr('target','_BLANK').attr('rel','noopener');
+ 
+ 
  //functions
  function moveForward(){
    loadOther(dateToDateStr(dateFns.addDays(dateStrToDate(dateKey),1)));
@@ -143,7 +147,7 @@ export function makePlayerApp(root, saintCalendar){
     .append($prevDateButton, $todayButton, $nextDateButton)
    )
    .append(audioWidget)
-   .append($footer);
+   .append($footer.append($githubLink));
  }
  
  return {render}

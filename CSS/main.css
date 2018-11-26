@@ -192,8 +192,16 @@ grid-template-areas:
 }
 
 .player-footer{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   grid-area: footer;
   background-color: #303030;
+  padding: 4px;
+}
+.github-icon{
+  text-decoration: none;
+  font-size: 2rem;
+  align-items: center;
   
 }
-
