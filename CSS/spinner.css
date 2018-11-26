@@ -32,7 +32,7 @@ z-index: 1;
 top:0;
 width: 100vw;
 height: 100vh;
-background-color: rgba(128,128,128,.5);
+background-color: transparent;
 display: flex;
 flex-direction: column;
 justify-content: center;
