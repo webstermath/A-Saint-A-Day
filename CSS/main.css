@@ -67,11 +67,11 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: lightblue;
+  background-color: blue;
+  color: white;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  
 }
 .app-search__label_saint{
  justify-self: end;
@@ -125,15 +125,6 @@ body{
   
 }
 
-.control_button{
-display: inline-block;
-font-size: 2em;
-margin: 10px;
-border-radius:25%;
-background-color: lightblue;
-color: ghostwhite;
-}
-
 .player-controls{
   display: flex;
   justify-content: space-evenly;
@@ -144,8 +135,8 @@ color: ghostwhite;
 
 .app-navigation__button, .player-controls__button, .track-controls__button{
  
- background-color: lightblue;
- color: black;
+  background-color: blue;
+  color: white;
  
 }
 .track-controls__button_play{
