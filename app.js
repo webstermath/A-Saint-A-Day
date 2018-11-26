@@ -68,7 +68,7 @@ export function makePlayerApp(root, saintCalendar){
 
  
  const $footer = $$('div').addClass('player-footer')
- const $githubLink = $$('a').addClass('fab fa-github github-icon').title('Github Repository')
+ const $githubLink = $$('a').addClass('fab fa-github github-icon').attr('title','Github Repository')
  .attr('href','https://github.com/webstermath/A-Saint-A-Day').attr('target','_BLANK').attr('rel','noopener');
  
  
