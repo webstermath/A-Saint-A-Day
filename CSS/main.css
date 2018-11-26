@@ -1,3 +1,10 @@
+/*
+@font-face {
+  font-family: 'Philosopher-auto';
+  font-display: swap;
+  src: local('Georgia'), url(https://fonts.googleapis.com/css?family=Philosopher);
+}
+*/
 html {
   box-sizing: border-box;
 }
@@ -37,11 +44,8 @@ body{
  max-width:600px;
  background-color: darkblue;
  margin:auto;
- /*
- border: 6px solid blue;
- border-radius: 10px;
- */
  height: 100vh;
+ min-height: 650px;
 }
 .app-search{
   grid-area: search;
@@ -70,7 +74,7 @@ body{
 }
 .player-app__title h1{
   margin: 0;
-  font-size: 3rem;
+  font-size: 2.8rem;
   
 }
 
@@ -87,7 +91,7 @@ body{
 .saint-app__date-title{
   grid-area: date-title;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.6rem;
   margin: 0;
   
 }
@@ -98,7 +102,7 @@ body{
   
 }
 .feast__title{
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   margin: 0;
   margin-bottom: 20px;
   
@@ -134,8 +138,8 @@ color: ghostwhite;
 }
 .track-controls__button_play{
  font-size: 4rem;
- width: 60vmin;
- height:60vmin;
+ width: 50vmin;
+ height:50vmin;
  max-width: 200px;
  max-height: 200px;
  border-radius:50%;
