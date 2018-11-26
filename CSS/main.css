@@ -30,7 +30,7 @@ body{
 .saint-app{
  display: grid;
  grid-template-columns: 100%;
- grid-template-rows: 50px 60px 50px 34px 80px 1fr 50px;
+ grid-template-rows: 50px 60px 50px 34px 60px 1fr 50px;
  grid-template-areas:
  "search"
  "title"
@@ -45,7 +45,7 @@ body{
  background-color: darkblue;
  margin:auto;
  height: 100vh;
- min-height: 650px;
+ min-height: 600px;
 }
 .app-search{
   grid-area: search;
