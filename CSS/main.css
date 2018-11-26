@@ -30,7 +30,7 @@ body{
 .saint-app{
  display: grid;
  grid-template-columns: 100%;
- grid-template-rows: 36px 60px 60px 60px 1fr 80px 36px;
+ grid-template-rows: 50px 60px 60px 60px 1fr 80px 50px;
  grid-template-areas:
  "search"
  "title"
@@ -51,15 +51,27 @@ body{
   grid-area: search;
   display: grid;
   background-color: #303030;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: repeat(3, 1fr);
   padding: 4px;
   
 }
 .app-search__label{
  font-size: 14px;
 }
-.app-search__label::first-letter{
- font-size: 24px;
+.app-search__button, .app-search__label::first-letter{
+ font-size: 34px;
+}
+.app-search__button_reload{
+  
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightblue;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  
 }
 .app-search__label_saint{
  justify-self: end;

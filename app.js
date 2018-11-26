@@ -64,6 +64,8 @@ export function makePlayerApp(root, saintCalendar){
  const $dateInput = $$('_date').addClass('app-search__input app-search__input_date').hide();
  const $saintLabel =$$('label').text('🔎').addClass('app-search__label app-search__label_saint').attr('title', 'Go To Saint'); //.attr('tabindex',0)
  const $saintInput = $$('_text').addClass('app-search__input app-search__input_saint').attr('list','saint_list').attr('placeholder','Go To Saint').hide(); //
+ const $reloadButton =$$('button').text('↻').addClass('app-search__button app-search__button_reload').attr('title', 'Reload'); //.attr('tabindex',0)
+
  
  const $footer = $$('div').addClass('player-footer')
  //functions
@@ -113,6 +115,7 @@ export function makePlayerApp(root, saintCalendar){
  $nextDateButton.click(moveForward);
  $dateInput.change(e => goToDate(e.target.value));
  $saintInput.change(e => goToSaint(e.target.value));
+ $reloadButton.click(evt => $container.replaceWith(getPlayerApp().render()))
  $dateLabel.hover(evt => $dateInput.show(), evt => $dateInput.hide());
  $saintLabel.hover(evt => $saintInput.show(),
  evt => $container.mouseover(e => {
@@ -128,6 +131,7 @@ export function makePlayerApp(root, saintCalendar){
     .append($dateLabel
      .append($dateInput)
     )
+    .append($reloadButton)
     .append($saintLabel
      .append($saintInput)
     )
