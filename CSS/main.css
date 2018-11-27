@@ -142,8 +142,8 @@ body{
 }
 .track-controls__button_play{
  font-size: 4rem;
- width: 50vmin;
- height:50vmin;
+ width: 30vmin;
+ height: 30vmin;
  max-width: 200px;
  max-height: 200px;
  border-radius:50%;
