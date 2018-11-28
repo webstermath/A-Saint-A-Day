@@ -21,7 +21,7 @@ export function getAudioWidget(saints){
  const $nextTrackButton = $$('button').text('>').addClass('player-controls__button player-controls__button_track_next');
  if(saintLen < 2) $nextTrackButton.hide();
  const $trackControls = $$('div').addClass('track_controls')
- const $trackPlayButton = $$('button').text('►').addClass('track-controls__button track-controls__button_play invisible')
+ const $trackPlayButton = $$('button').html('<div>►</div>').addClass('track-controls__button track-controls__button_play invisible')
 
  //functions
  function togglePlay() {
@@ -31,7 +31,7 @@ export function getAudioWidget(saints){
  
  function updateButton() {
   const icon = $playerAudio[0].paused ? '►' : '❚ ❚';
-  $trackPlayButton.text(icon);
+  $trackPlayButton.html(`<div>${icon}</div>`);
  }
  
  function resetTime(){
