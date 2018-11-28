@@ -35,6 +35,7 @@ export function makePlayerApp(root, saintCalendar){
  
  function getPlayerApp(){
  // data
+  const platform = window.navigator.platform;
 
   const livesOfTheSaintsUrl='https://librivox.org/lives-of-the-saints-with-reflections-for-every-day-in-the-year-by-alban-butler/';
   const marieThereseUrl='https://catholicaudiobooks.wordpress.com/';
@@ -60,9 +61,11 @@ export function makePlayerApp(root, saintCalendar){
  const $nextDateButton = $$('button').text('→').addClass('app-navigation__button app-navigation__button_date_next');
 
  const $appSearch = $$('div').addClass('app-search');
- const $dateLabel =$$('label').text('📅').addClass('app-search__label app-search__label_date').attr('title', 'Go To Date'); //.attr('tabindex',0)
+ const $dateLabel =$$('label').text('📅').addClass('app-search__label app-search__label_date').attr('title', 'Go To Date')
+ .addClass(platform.toLowerCase() == 'iphone' ? 'invisible' : '' )//.attr('tabindex',0)
  const $dateInput = $$('_date').addClass('app-search__input app-search__input_date').hide();
- const $saintLabel =$$('label').text('🔎').addClass('app-search__label app-search__label_saint').attr('title', 'Go To Saint'); //.attr('tabindex',0)
+ const $saintLabel =$$('label').text('🔎').addClass('app-search__label app-search__label_saint').attr('title', 'Go To Saint')
+ .addClass(platform.toLowerCase() == 'iphone' ? 'invisible' : '' ); //.attr('tabindex',0)
  const $saintInput = $$('_text').addClass('app-search__input app-search__input_saint').attr('list','saint_list').attr('placeholder','Go To Saint').hide(); //
  const $reloadButton =$$('button').text('↻').addClass('app-search__button app-search__button_reload').attr('title', 'Reload'); //.attr('tabindex',0)
 
