@@ -46,17 +46,9 @@ function matchGeneral(request){
 
 workbox.routing.registerRoute(
   matchImages,
-  workbox.strategies.cacheFirst({
-    cacheName: 'image-cache-v1',
-    plugins: [
-      new workbox.expiration.Plugin({
-        // Only cache requests for a week
-        maxAgeSeconds: 7 * 24 * 60 * 60
-        // Only cache 10 requests.
-        //maxEntries: 10,
-      }),
-    ]
-  })
+  workbox.strategies.staleWhileRevalidate({
+    cacheName: 'image-cache-v1'
+    })
 );
 function matchImages(request){
 const pathname = request.url.pathname;
@@ -65,17 +57,9 @@ return ['png'].some( ext => pathname.endsWith(ext));
 
 workbox.routing.registerRoute(
   matchFonts,
-  workbox.strategies.cacheFirst({
-    cacheName: 'fonts-cache-v1',
-    plugins: [
-      new workbox.expiration.Plugin({
-        // Only cache requests for a week
-        maxAgeSeconds: 7 * 24 * 60 * 60
-        // Only cache 10 requests.
-        //maxEntries: 10,
-      }),
-    ]
-  })
+  workbox.strategies.staleWhileRevalidate({
+    cacheName: 'fonts-cache-v1'
+    })
 );
 function matchFonts(request){
 const pathname = request.url.pathname;
@@ -84,17 +68,23 @@ return ['woff2'].some( ext => pathname.endsWith(ext));
 
 workbox.routing.registerRoute(
   matchAudio,
-  workbox.strategies.cacheFirst({
-    cacheName: 'audio-cache-v1',
-    plugins: [
-      new workbox.expiration.Plugin({
-        // Only cache requests for a week
-        maxAgeSeconds: 31 * 24 * 60 * 60
-        // Only cache 10 requests.
-        //maxEntries: 10,
-      }),
-    ]
+  workbox.strategies.staleWhileRevalidate({
+   cacheName: 'audio-cache-v1'
   })
+  // workbox.strategies.cacheFirst({
+  //   cacheName: 'audio-cache-v1',
+  //   plugins: [
+  //     new workbox.expiration.Plugin({
+  //       // Only cache requests for a week
+  //       maxAgeSeconds: 31 * 24 * 60 * 60
+  //       // Only cache 10 requests.
+  //       //maxEntries: 10,
+  //     }),
+  //     new workbox.cacheableResponse.Plugin({
+  //       statuses: [0, 200]
+  //     })
+  //   ]
+  // })
 );
 function matchAudio(request){
 const pathname = request.url.pathname;
