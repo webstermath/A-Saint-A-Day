@@ -1,12 +1,19 @@
-# A-Saint-A-Day
-A Saint A Day
+# A Saint A Day
+
+An App for listening to The Lives Of The Saints by Alban Butler as recorded by Marie Therese.
+
+The App can be found at [asaintaday.com](https://asaintaday.com)
+
+## Contributions
+
+Contributions and suggestions are welcome.
 
 ## Todo
 - Finish recording track times in spreadsheet
-- Make offline first
-- Make github repo public
+- Style better buttons
+- Improve Caching resources
 
-## End Goal
+## Future
 1. Track Tools
 - Build better track tools for collaboration and capture
 - analyze sound volume and use auto-dictation that matches times with text to predict break points

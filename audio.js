@@ -13,6 +13,7 @@ export function getAudioWidget(saints){
  const $container = $$('div').addClass('feast-widget')
  const $title = $$('h3').text(saint.title).addClass("feast__title");
  const $player = $$('div').addClass("player")
+ //.attr("crossorigin","anonymous")
  const $playerAudio = $$('audio').attr('src',audioUrl).addClass('player__audio')
  $playerAudio[0].load();
  const $playerControls = $$('div').addClass('player-controls')
