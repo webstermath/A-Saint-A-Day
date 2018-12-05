@@ -97,7 +97,6 @@ export function makePlayerApp(root, saintCalendar){
  }
  
  function loadOther(dateKey,track){
-   $('#wait-layer').show();
    setUrlParam({
      type: 'other',
      dateKey: dateKey,
@@ -107,7 +106,6 @@ export function makePlayerApp(root, saintCalendar){
  }
  
  function loadToday(){
-   $('#wait-layer').show();
    setUrlParam({
      type: 'today',
      dateKey: dateToDateStr(new Date()),

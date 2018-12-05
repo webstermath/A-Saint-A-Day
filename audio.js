@@ -22,7 +22,8 @@ export function getAudioWidget(saints){
  const $nextTrackButton = $$('button').text('>').addClass('player-controls__button player-controls__button_track_next');
  if(saintLen < 2) $nextTrackButton.hide();
  const $trackControls = $$('div').addClass('track_controls')
- const $trackPlayButton = $$('button').html('<div>►</div>').addClass('track-controls__button track-controls__button_play invisible')
+ const $trackPlayButton = $$('button').html('<div>►</div>').addClass('track-controls__button track-controls__button_play ')
+ const $trackPlayButtonSpinner = $$('div').addClass('spinner track-controls__button-spinner_play')
 
  //functions
  function togglePlay() {
@@ -51,7 +52,6 @@ export function getAudioWidget(saints){
  }
  
  function changeTrack(track){
-   $('#wait-layer').show();
    setUrlParam('track',track);
    $container.replaceWith(getAudioWidget(saints).render());
  }
@@ -65,9 +65,8 @@ export function getAudioWidget(saints){
   $prevTrackButton.click(prevTrack)
   $nextTrackButton.click(nextTrack)
   $playerAudio[0].addEventListener('canplaythrough',function(e){
-   $playerAudio[0].currentTime = saint.start
-   $trackPlayButton.removeClass('invisible');
-   $('#wait-layer').hide();
+   $playerAudio[0].currentTime = saint.start;
+   $trackPlayButtonSpinner.replaceWith($trackPlayButton);
   },{once: true});
  
  // render
@@ -79,7 +78,7 @@ export function getAudioWidget(saints){
      .append($playerControls
       .append($prevTrackButton)
       .append($trackControls
-       .append($trackPlayButton)
+       .append($trackPlayButtonSpinner)
       )
       .append($nextTrackButton)
      )

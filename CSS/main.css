@@ -148,6 +148,14 @@ body{
  max-height: 200px;
  border-radius:50%;
 }
+.track-controls__button-spinner_play{
+ width: 30vmin;
+ height: 30vmin;
+ max-width: 200px;
+ max-height: 200px;
+}
+
+
 .player-controls__button{
   font-size: 2em;
   flex-basis: 40px;
@@ -167,11 +175,7 @@ body{
  border-radius: 10px;
 }
 
-.track-controls__play_button{
-  visibility: hidden;
-}
-
-.app-navigation{;
+.app-navigation{
 display: inline-grid;
 grid-row-gap: 10px;
 grid-template-columns: 2% 28% 10% 20% 10% 28% 2%;
