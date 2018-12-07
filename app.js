@@ -46,7 +46,7 @@ export function makePlayerApp(root, saintCalendar){
  const $container = $$('div').addClass('saint-app');
  
  const $appTitle =$$('div').addClass('player-app__title')
-  .append($$('h1').text('A Saint A Day'));
+  .append($$('h1').html('A Saint A Day <span>Beta</span>'));
  
  const $appSubTitle =$$('div').addClass('player-app__subtitle')
   .append($$('h4').html(`From <a href="${livesOfTheSaintsUrl}" rel="noopener" target="_BLANK">The Lives of The Saints</a>`))

@@ -91,6 +91,11 @@ body{
   
 }
 
+.player-app__title span{
+  font-style: italic;
+  font-size: 2rem;
+}
+
 .player-app__subtitle{
   grid-area: subtitle;
   text-align: center;
