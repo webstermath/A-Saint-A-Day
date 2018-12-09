@@ -25,8 +25,8 @@ html {
 .icon_pause{
  width: 12vmin;
  height: 12vmin;
- border-left: 3vmin solid white;
- border-right: 3vmin solid white;
+ border-left: 4vmin solid white;
+ border-right: 4vmin solid white;
 }
 
 .invisible{
