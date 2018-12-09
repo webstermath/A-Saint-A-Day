@@ -14,6 +14,21 @@ html {
   box-sizing: inherit;
 }
 
+
+.icon_play{
+  width: 0;
+  height: 0;
+    border-top: 8vmin solid transparent;
+    border-bottom: 8vmin solid transparent;
+    border-left: 13vmin solid white;
+}
+.icon_pause{
+ width: 12vmin;
+ height: 12vmin;
+ border-left: 4vmin solid white;
+ border-right: 4vmin solid white;
+}
+
 .invisible{
   visibility: hidden;
 }
@@ -146,6 +161,9 @@ body{
  
 }
 .track-controls__button_play{
+ display: flex;
+ justify-content: center;
+ align-items: center;
  font-size: 4rem;
  width: 30vmin;
  height: 30vmin;

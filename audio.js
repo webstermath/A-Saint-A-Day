@@ -22,7 +22,7 @@ export function getAudioWidget(saints){
  const $nextTrackButton = $$('button').text('>').addClass('player-controls__button player-controls__button_track_next');
  if(saintLen < 2) $nextTrackButton.hide();
  const $trackControls = $$('div').addClass('track_controls')
- const $trackPlayButton = $$('button').html('<div>►</div>').addClass('track-controls__button track-controls__button_play ')
+ const $trackPlayButton = $$('button').html('<div class="icon_play"></div>').addClass('track-controls__button track-controls__button_play ')
  const $trackPlayButtonSpinner = $$('div').addClass('spinner track-controls__button-spinner_play')
 
  //functions
@@ -32,8 +32,8 @@ export function getAudioWidget(saints){
  }
  
  function updateButton() {
-  const icon = $playerAudio[0].paused ? '►' : '❚ ❚';
-  $trackPlayButton.html(`<div>${icon}</div>`);
+  const icon = $playerAudio[0].paused ? '<div class="icon_play"></div>' : '<div class="icon_pause"></div>';
+  $trackPlayButton.html(icon);
  }
  
  function resetTime(){
