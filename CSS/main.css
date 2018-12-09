@@ -13,14 +13,21 @@ html {
 *:after{
   box-sizing: inherit;
 }
-
+button{
+  border: none;
+  box-shadow: 3px 3px 10px rgba(0,0,0,.6);
+}
+button:active{
+  box-shadow: none;
+  
+}
 
 .icon_play{
   width: 0;
   height: 0;
-    border-top: 8vmin solid transparent;
-    border-bottom: 8vmin solid transparent;
-    border-left: 13vmin solid white;
+  border-top: 8vmin solid transparent;
+  border-bottom: 8vmin solid transparent;
+  border-left: 13vmin solid white;
 }
 .icon_pause{
  width: 12vmin;
