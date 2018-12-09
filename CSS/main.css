@@ -45,7 +45,7 @@ body{
 .saint-app{
  display: grid;
  grid-template-columns: 100%;
- grid-template-rows: 50px 60px 50px  34px 1fr 60px 1fr 50px;
+ grid-template-rows: 50px 80px 50px  34px 1fr 60px 1fr 50px;
  grid-template-areas:
  "search"
  "title"
@@ -97,19 +97,30 @@ body{
 }
 .player-app__title{
   grid-area: title;
-  text-align: center;
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  line-height: 0.8;
 }
 .player-app__title h1{
-  margin: 0;
+  margin:0;
   font-size: 2.8rem;
+  
+}
+.player-app__title h1::after{
+  content:" beta";
+  font-style: italic;
+  font-size: 1.6rem;
+  
   
 }
 
 .player-app__title span{
   font-style: italic;
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
+
 
 .player-app__subtitle{
   grid-area: subtitle;
