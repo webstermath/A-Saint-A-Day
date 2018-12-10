@@ -10,7 +10,7 @@ export function getAudioWidget(saints){
  const audioUrl = saint.url;
  if(!audioUrl) $('#wait-layer').hide();
  // elements
- const $container = $$('div').addClass('feast-widget')
+ const $container = $$('div').addClass('audio-widget')
  const $title = $$('h3').text(saint.title).addClass("feast__title");
  const $player = $$('div').addClass("player")
  //.attr("crossorigin","anonymous")

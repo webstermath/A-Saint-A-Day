@@ -43,7 +43,7 @@ export function makePlayerApp(root, saintCalendar){
   const saints = saintCalendar[dateKey.slice(5)];
   
  //elements
- const $container = $$('div').addClass('saint-app');
+ const $container = $$('div').addClass('player-app');
  
  const $appTitle =$$('div').addClass('player-app__title')
   .append($$('h1').html('A Saint A Day'))
@@ -54,13 +54,13 @@ export function makePlayerApp(root, saintCalendar){
   .append($$('h4').html(`From <a href="${livesOfTheSaintsUrl}" rel="noopener" target="_BLANK">The Lives of The Saints</a>`))
   .append($$('h4').html(`Read by <a href="${marieThereseUrl}" rel="noopener" target="_BLANK">Maria Therese</a>`));
 
- const $dateTitle = $$('h2').text(dateFns.format(dateStrToDate(dateKey),'dddd, MMMM D')).addClass("saint-app__date-title");
+ const $dateTitle = $$('h2').text(dateFns.format(dateStrToDate(dateKey),'dddd, MMMM D')).addClass("player-app__date-title");
  const audioWidget = (saints && saints.length) ? getAudioWidget(saints).render() : $$('h3').text('No Saint Found').addClass("no-saint-found");
  
  const $appNavigation = $$('div').addClass('app-navigation');
- const $prevDateButton = $$('button').text('←').addClass('app-navigation__button app-navigation__button_date_prev');
- const $todayButton = $$('button').text('☀').addClass('app-navigation__button app-navigation__button_date_today');
- const $nextDateButton = $$('button').text('→').addClass('app-navigation__button app-navigation__button_date_next');
+ const $prevDateButton = $$('button').text('←').addClass('app-navigation__button app-navigation__button_date_prev').attr('title','Previous Day');
+ const $todayButton = $$('button').text('☀').addClass('app-navigation__button app-navigation__button_date_today').attr('title','Today');
+ const $nextDateButton = $$('button').text('→').addClass('app-navigation__button app-navigation__button_date_next').attr('title','Next Day');
 
  const $appSearch = $$('div').addClass('app-search');
  const $dateLabel =$$('label').text('📅').addClass('app-search__label app-search__label_date').attr('title', 'Go To Date')
