@@ -6,32 +6,9 @@ if (workbox) {
 } else {
   console.log(`Boo! Workbox didn't load 😬`);
 }
-//new RegExp('8000\/$')
-//new RegExp('\/')http://127.0.0.1:8000/?type=today&dateKey=2018-11-29&track=0
-//new RegExp('8000\/?\?')
-//new RegExp('8000\/?\??[^.]*$')
-//workbox.strategies.networkFirst()
 
-//workbox.strategies.cacheFirst
-//workbox.strategies.staleWhileRevalidate()
+workbox.googleAnalytics.initialize()
 
-
-/*
-workbox.routing.registerRoute(
-  new RegExp('/images/'),
-  workbox.strategies.cacheFirst({
-    cacheName: 'image-cache',
-    plugins: [
-      new workbox.expiration.Plugin({
-        // Only cache requests for a week
-        maxAgeSeconds: 7 * 24 * 60 * 60,
-        // Only cache 10 requests.
-        maxEntries: 10,
-      }),
-    ]
-  })
-);
-*/
 workbox.routing.registerRoute(
   matchGeneral,
   workbox.strategies.staleWhileRevalidate({
