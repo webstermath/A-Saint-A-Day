@@ -73,6 +73,8 @@ export function makePlayerApp(root, saintCalendar){
 
  
  const $footer = $$('div').addClass('player-footer')
+ const $twitterLink = $$('a').addClass("fab fa-twitter twiiter-icon").attr('title','Twitter Account')
+ .attr('href','https://twitter.com/ASaintADay1').attr('target','_BLANK').attr('rel','noopener');
  const $githubLink = $$('a').addClass('fab fa-github github-icon').attr('title','Github Repository')
  .attr('href','https://github.com/webstermath/A-Saint-A-Day').attr('target','_BLANK').attr('rel','noopener');
  
@@ -150,7 +152,7 @@ export function makePlayerApp(root, saintCalendar){
    .append($appNavigation
     .append($prevDateButton, $todayButton, $nextDateButton)
    )
-   .append($footer.append($githubLink));
+   .append($footer.append($twitterLink,$githubLink));
  }
  
  return {render}
