@@ -245,7 +245,7 @@ grid-template-areas:
   background-color: #303030;
   padding: 4px;
 }
-.twiiter-icon, .github-icon{
+.twitter-icon, .github-icon, .cal-icon{
   text-decoration: none;
   font-size: 2rem;
   align-items: center;

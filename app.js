@@ -72,8 +72,10 @@ export function makePlayerApp(root, saintCalendar){
  const $reloadButton =$$('button').text('↻').addClass('app-search__button app-search__button_reload').attr('title', 'Reload'); //.attr('tabindex',0)
 
  
- const $footer = $$('div').addClass('player-footer')
- const $twitterLink = $$('a').addClass("fab fa-twitter twiiter-icon").attr('title','Twitter Account')
+ const $footer = $$('div').addClass('player-footer');
+ const $calendarLink = $$('a').addClass("far fa-calendar-alt cal-icon").attr('title','Saint Calendar')
+ .attr('href','https://calendar.google.com/calendar/embed?src=asaintaday1%40gmail.com&ctz=America%2FLos_Angeles').attr('target','_BLANK').attr('rel','noopener');
+ const $twitterLink = $$('a').addClass("fab fa-twitter twitter-icon").attr('title','Twitter Account')
  .attr('href','https://twitter.com/ASaintADay1').attr('target','_BLANK').attr('rel','noopener');
  const $githubLink = $$('a').addClass('fab fa-github github-icon').attr('title','Github Repository')
  .attr('href','https://github.com/webstermath/A-Saint-A-Day').attr('target','_BLANK').attr('rel','noopener');
@@ -152,7 +154,7 @@ export function makePlayerApp(root, saintCalendar){
    .append($appNavigation
     .append($prevDateButton, $todayButton, $nextDateButton)
    )
-   .append($footer.append($twitterLink,$githubLink));
+   .append($footer.append($calendarLink,$twitterLink,$githubLink));
  }
  
  return {render}
