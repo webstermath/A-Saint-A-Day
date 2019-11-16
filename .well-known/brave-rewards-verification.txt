@@ -1,4 +1,0 @@
-This is a Brave Rewards publisher verification file.
-
-Domain: asaintaday.com
-Token: 8f6d990a74d8e6ac9ce92a8dbc809321e21c128996168db632d6bc2188832043
