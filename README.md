@@ -8,6 +8,10 @@ The App can be found at [asaintaday.com](https://asaintaday.com)
 
 Contributions and suggestions are welcome.
 
+## Support
+
+You can support A Saint A Day with [Brave](https://brave.com/asa252)
+
 ## Todo
 - Finish recording track times in spreadsheet
 - Style better buttons
